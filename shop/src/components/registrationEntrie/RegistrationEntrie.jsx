@@ -1,7 +1,10 @@
 import React , {useRef , useState} from 'react'
+import Login from '../../pages/Login/Login';
 
 function RegistrationEntrie({ type = 'text' , maxLength , minLength , label , handlerKeyPressBet = false , textarea = false}) { 
   
+  const [state, setState] = useState('hi');
+
   const handlerKeyPress = (event) =>{
     const char = event.key;
     const isCharacterValid = /[a-z_]/.test(char);
@@ -26,12 +29,13 @@ function RegistrationEntrie({ type = 'text' , maxLength , minLength , label , ha
     }
   }
 
-  const inputKeyUp = ()=>{
-    if (input.current.value == ''){
+  const inputKeyUp = (event)=>{
+    if (input.current.value === ''){
       setInputLabel({top: '50%'})
     }else{
       setInputLabel({top: '0%'})
     }
+    // setUsername(event.target.value)
   }
 
   return (
@@ -54,12 +58,13 @@ function RegistrationEntrie({ type = 'text' , maxLength , minLength , label , ha
             onKeyPress={handlerKeyPressBet ? (event) => handlerKeyPress(event) : null} 
             onClick={() => inputClick()}
             onBlur={() => inputBlur()}
-            onKeyUp={() => inputKeyUp()}
+            onKeyUp={inputKeyUp}
             required
             />
           }
             <label style={inputLabel}>{label}</label>
         </div>
+        <Login state={state} stateHandler={setState} />
     </>
   )
 }

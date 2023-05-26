@@ -42,7 +42,7 @@ maxLengthOne , maxLengthTwo , minLengthOne , minLengthTwo , labelOne , labelTwo 
   }
 
   const inputKeyUp = ()=>{
-    if (input.current.value == ''){
+    if (input.current.value === ''){
       setInputLabel({top: '50%'})
     }else{
       setInputLabel({top: '0%'})

@@ -5,8 +5,8 @@ import RegistrationEntries from '../../components/registrationEntries/Registrati
 import PasswordInput from '../../components/passwordInput/PasswordInput'
 import './Login.css'
 
-function Login() {
-  
+function Login({ ...props }) {
+  props.stateHandler('hello world!');
   useEffect(() => {
     document.title = 'Signup & Login | Online Shop'
   }, [])
@@ -15,7 +15,8 @@ function Login() {
   const [signupForm, setSignupForm] = useState()
   const [loginText, setloginText] = useState()
   const [wrapper , setWrapper] = useState()
-  
+
+
   const signupBtn = () => {
     setWrapper({marginTop: '5.5%'})
     setSignupForm({ display: 'block' })
@@ -34,6 +35,34 @@ function Login() {
         setSignupForm({ display: 'none' })
         setWrapper({marginTop: '13%'})
     },300)
+  }
+
+  const signup = ()=>{
+      let formData = {
+        // 'username': username,
+        // 'nameLastname': username.value,
+        // 'password': lastname.value,
+        // 'email': lastname.value,
+        // 'phoneNumber': lastname.value,
+        // 'city': lastname.value,
+        // 'address': lastname.value,
+        // 'nationalCode': lastname.value,
+        // 'registrationTime': lastname.value,
+      }
+  
+      fetch('http://127.0.0.1:8000/signup', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+      })
+      .then( response => {
+      console.log(response);
+      })
+      .catch(error => {
+      console.log(error);
+      });
   }
 
   return (
@@ -61,6 +90,7 @@ function Login() {
 
         <form style={loginForm} className='login'>
 
+        <h1>{props.state}</h1>
           <RegistrationEntrie 
           maxLength={22} 
           label={'User Name'} 
@@ -87,11 +117,11 @@ function Login() {
           <div className='tow-box'>
           <PasswordInput/>
 
-          <RegistrationEntrie 
+          {/* <RegistrationEntrie 
           type={'email'} 
           maxLength={35} 
           label={'Email'} 
-          />
+          /> */}
           </div>
 
           <RegistrationEntries 
@@ -109,20 +139,20 @@ function Login() {
           textBetOne={false}
           />
 
-          <RegistrationEntrie 
+          {/* <RegistrationEntrie 
           maxLength={120} 
           label={'Address'} 
           textarea={true}
-          />
+          /> */}
 
-          <RegistrationEntrie 
+          {/* <RegistrationEntrie 
           maxLength={10} 
           minLength={7} 
           label={'National Code'} 
-          />
+          /> */}
 
           <div className='field'>
-            <button className='btn btn-signup' type='submit'>
+            <button onClick={()=> signup()} className='btn btn-signup' type='submit'>
               <span className='btn__text'>Signup</span>
               <BtnSvg />
             </button>
