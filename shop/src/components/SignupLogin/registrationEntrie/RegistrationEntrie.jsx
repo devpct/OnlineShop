@@ -33,7 +33,7 @@ function RegistrationEntrie({ type = 'text' , maxLength , minLength , label , ha
     }else{
       setInputLabel({top: '0%'})
     }
-    props.stateHandler(event.target.value)
+    // props.stateHandler(event.target.value)
     // setUsername()
   }
 
