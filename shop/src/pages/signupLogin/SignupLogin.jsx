@@ -1,12 +1,14 @@
 import React, { useEffect , useState } from 'react'
-import BtnSvg from '../../components/btnSvg/BtnSvg'
-import RegistrationEntrie from '../../components/registrationEntrie/RegistrationEntrie'
-import RegistrationEntries from '../../components/registrationEntries/RegistrationEntries'
-import PasswordInput from '../../components/passwordInput/PasswordInput'
-import './Login.css'
+import BtnSvg from '../../components/SignupLogin/btnSvg/BtnSvg'
+import RegistrationEntrie from '../../components/SignupLogin/registrationEntrie/RegistrationEntrie'
+import RegistrationEntries from '../../components/SignupLogin/registrationEntries/RegistrationEntries'
+import PasswordInput from '../../components/SignupLogin/passwordInput/PasswordInput'
+import './SignupLogin.css'
 
-function Login({ ...props }) {
-  props.stateHandler('hello world!');
+function SignupLogin() {
+  
+  const [state, setState] = useState('hi');
+
   useEffect(() => {
     document.title = 'Signup & Login | Online Shop'
   }, [])
@@ -90,13 +92,14 @@ function Login({ ...props }) {
 
         <form style={loginForm} className='login'>
 
-        <h1>{props.state}</h1>
           <RegistrationEntrie 
           maxLength={22} 
           label={'User Name'} 
           handlerKeyPressBet={true}
+          state={state}
+          stateHandler={setState}
           />
-
+        {state}
           <PasswordInput lPassBet={true}/>
 
           <div className='field'>
@@ -178,4 +181,4 @@ function Login({ ...props }) {
   )
 }
 
-export default Login
+export default SignupLogin

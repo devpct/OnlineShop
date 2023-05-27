@@ -1,8 +1,8 @@
-import Login from './pages/Login/Login'
-import NotFound from './pages/NotFound/NotFound'
+import SignupLogin from './pages/signupLogin/SignupLogin'
+import NotFound from './pages/notFound/NotFound'
 
 let router = [
-    {path: '/' , element:<Login/>},
+    {path: '/' , element:<SignupLogin/>},
     {path: '*' , element:<NotFound/>}
 ]
 

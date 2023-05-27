@@ -1,9 +1,7 @@
 import React , {useRef , useState} from 'react'
-import Login from '../../pages/Login/Login';
 
-function RegistrationEntrie({ type = 'text' , maxLength , minLength , label , handlerKeyPressBet = false , textarea = false}) { 
+function RegistrationEntrie({ type = 'text' , maxLength , minLength , label , handlerKeyPressBet = false , textarea = false , ...props }) { 
   
-  const [state, setState] = useState('hi');
 
   const handlerKeyPress = (event) =>{
     const char = event.key;
@@ -35,7 +33,8 @@ function RegistrationEntrie({ type = 'text' , maxLength , minLength , label , ha
     }else{
       setInputLabel({top: '0%'})
     }
-    // setUsername(event.target.value)
+    props.stateHandler(event.target.value)
+    // setUsername()
   }
 
   return (
@@ -64,7 +63,6 @@ function RegistrationEntrie({ type = 'text' , maxLength , minLength , label , ha
           }
             <label style={inputLabel}>{label}</label>
         </div>
-        <Login state={state} stateHandler={setState} />
     </>
   )
 }
