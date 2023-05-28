@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useContext } from 'react';
 import BtnSvg from '../btnSvg/BtnSvg';
-import RegistrationEntrie from '../registrationEntrie/RegistrationEntrie';
-import RegistrationEntries from '../registrationEntries/RegistrationEntries';
+import RegistrationEntrie from '../registrationEntrie/RegistrationEntrie'
+import RegistrationEntries from '../registrationEntries/RegistrationEntries'
 import PasswordInput from '../passwordInput/PasswordInput';
+import { SignupFormContext } from '../../../context/signupLogin/FormContext'
 
-function Signup({ ...props }) {
-  const [signupForm, setSignupForm] = useState();
+function Signup() {
+
+  const signupForm = useContext(SignupFormContext);  
 
   const signup = () => {
     let formData = {
@@ -35,12 +37,9 @@ function Signup({ ...props }) {
       });
   };
 
-//   useEffect(() => {
-//     props.setHandler('MMD');
-//   }, [props.setHandler]);
-
   return (
     <>
+    //error style={signupForm}
       <form style={signupForm} className="signup">
         <RegistrationEntries
           maxLengthOne={35}
@@ -98,3 +97,4 @@ function Signup({ ...props }) {
 }
 
 export default Signup;
+

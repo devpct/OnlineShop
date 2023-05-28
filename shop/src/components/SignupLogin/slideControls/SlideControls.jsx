@@ -1,26 +1,29 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { WrapperContext , SignupFormContext } from '../../../context/signupLogin/FormContext'
 
 function SlideControls() {
+    const wrapper = useContext(WrapperContext);  
+    const signupForm = useContext(SignupFormContext);  
 
-    // const signupBtn = () => {
-    //     setWrapper({marginTop: '5.5%'})
-    //     setSignupForm({ display: 'block' })
-    //     setloginForm({marginLeft: '-65%'})
-    //     setloginText({marginLeft: '-50%'})
-    // } 
+    const signupBtn = () => {
+        wrapper({marginTop: '5.5%'})
+        signupForm({ display: 'block' })
+        setloginForm({marginLeft: '-65%'})
+        setloginText({marginLeft: '-50%'})
+    } 
     
-    // const loginBtn = () => {
-    //     setloginForm({display: 'block'})
-    //     setloginText({marginLeft: '0%'})
-    //     delysignup()
-    //   }
+    const loginBtn = () => {
+        setloginForm({display: 'block'})
+        setloginText({marginLeft: '0%'})
+        delysignup()
+      }
       
-    //   function delysignup() {
-    //       setTimeout(()=>{
-    //         setSignupForm({ display: 'none' })
-    //         setWrapper({marginTop: '13%'})
-    //     },300)
-    //   }
+      function delysignup() {
+          setTimeout(()=>{
+            signupForm({ display: 'none' })
+            wrapper({marginTop: '13%'})
+        },300)
+      }
   return (
     <>
     <div className='slide-controls'>
@@ -35,3 +38,4 @@ function SlideControls() {
 }
 
 export default SlideControls
+
