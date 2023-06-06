@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { ModalContainerContext } from '../../../context/signupLogin/FormContext'
 
 function ModalContainer() {
+  const [modalContainer , setModalContainer] = useContext(ModalContainerContext)
+
+  // 'bi bi-exclamation-circle-fill'
+  // The information entered is incorrect
   return (
     <>
-    <div id='modalContainer'>
+    <div style={modalContainer} id='modalContainer'>
       <div className='modal-content'>
-        <i className='bi bi-exclamation-circle-fill'></i>
+        <i className={modalContainer.icon}></i>
         <p className='paragraf'>
-          The information entered is incorrect
+          {modalContainer.description}
         </p>
       </div>
     </div>

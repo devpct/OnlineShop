@@ -1,14 +1,16 @@
-import React, {useState} from 'react'
+import React, { useContext , useEffect} from 'react'
+import { LoginTextContext } from '../../../context/signupLogin/FormContext'
 
 function TitleText() {
 
-  const [loginText, setloginText] = useState()
+  const [loginText , setLoginText] = useContext(LoginTextContext)
+
 
   return (
     <>
     <div className='title-text'>
         <h1 style={loginText} className='title'>Login</h1>
-        <h1 className='title signup'>Signup</h1>
+        <h1 className='title'>Signup</h1>
     </div>
     </>
   )

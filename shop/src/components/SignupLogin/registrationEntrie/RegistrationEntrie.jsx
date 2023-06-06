@@ -1,6 +1,6 @@
-import React , {useRef , useState} from 'react'
+import React , { useRef , useState } from 'react'
 
-function RegistrationEntrie({ type = 'text' , maxLength , minLength , label , handlerKeyPressBet = false , textarea = false , ...props }) { 
+function RegistrationEntrie({ type = 'text' , maxLength , minLength , label , handlerKeyPressBet = false , textarea = false }) { 
   
 
   const handlerKeyPress = (event) =>{
@@ -33,8 +33,6 @@ function RegistrationEntrie({ type = 'text' , maxLength , minLength , label , ha
     }else{
       setInputLabel({top: '0%'})
     }
-    // props.stateHandler(event.target.value)
-    // setUsername()
   }
 
   return (

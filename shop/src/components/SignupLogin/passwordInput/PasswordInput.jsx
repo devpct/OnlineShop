@@ -1,17 +1,18 @@
-import React ,{useRef , useState} from 'react'
+import React ,{useRef , useState , useEffect} from 'react'
 
-function PasswordInput({ lPassBet = false }) {
+function PasswordInput({ lPassBet , setInputsValue , value , Change}) {
+
   const iconPass = useRef();
   const password = useRef();
 
   const [alertPass, setAlertPass] = useState();
 
-  const iconPassword = () => {
-    if (iconPass.current.className === 'icon-password bi-eye-slash-fill') {
-      iconPass.current.className = 'icon-password bi-eye-fill';
+  const iconPassword = () => { 
+    if (iconPass.current.className === 'icon-password  bi-eye-slash-fill') {
+      iconPass.current.className = 'icon-password  bi-eye-fill'
       password.current.type = 'text';
     } else {
-      iconPass.current.className = 'icon-password bi-eye-slash-fill';
+      iconPass.current.className = 'icon-password  bi-eye-slash-fill'
       password.current.type = 'password';
     }
   };
@@ -25,7 +26,15 @@ function PasswordInput({ lPassBet = false }) {
     }
   };
 
-  const errorPass = () => {
+  const errorPass = (event,lPassBet) => {
+    if (!lPassBet) {
+      setInputsValue((prevInputsValue) => {
+        return {
+          ...prevInputsValue,
+          password: event.target.value
+        }
+      })
+    }
     if (password.current.value.length === 8 || password.current.value.length === 0) {
       setAlertPass({ display: 'none' });
     }
@@ -34,18 +43,18 @@ function PasswordInput({ lPassBet = false }) {
 
   return (
     <>
-      <div className='field box-pass'>
         <input
           ref={password}
-          onKeyUp={errorPass}
+          onKeyUp={(event) => errorPass(event,lPassBet)}
           onBlur={errorPassword}
           type='password'
           maxLength={8}
+          value={value}
+          onChange={Change}
           required
         />
         <label>Password</label>
-        <i ref={iconPass} onClick={iconPassword} className='icon-password bi-eye-slash-fill'></i>
-      </div>
+        <i ref={iconPass} onClick={iconPassword} className='icon-password  bi-eye-slash-fill'></i>
       {lPassBet ? (
         <p style={alertPass} id='alertlpass'>
           The password must be 8 digits

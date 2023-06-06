@@ -1,38 +1,37 @@
-import React, {useContext} from 'react'
-import { WrapperContext , SignupFormContext } from '../../../context/signupLogin/FormContext'
+import React, { useContext , useEffect , useState} from 'react'
+import { useNavigate } from 'react-router-dom'
+import { SignupFormBetContext } from '../../../context/signupLogin/FormContext'
+import { SlideTabContext } from '../../../context/signupLogin/FormContext'
+import { TextLoginContext } from '../../../context/signupLogin/FormContext'
+import { TextSignupContext } from '../../../context/signupLogin/FormContext'
 
 function SlideControls() {
-    const wrapper = useContext(WrapperContext);  
-    const signupForm = useContext(SignupFormContext);  
+  
+    const [signupFormBet, setSignupFormBet] = useContext(SignupFormBetContext)
+    const [slideTab, setSlideTab] = useContext(SlideTabContext)
+    const [textLogin , setTextLogin] = useContext(TextLoginContext)
+    const [textSignup , setTextSignup] = useContext(TextSignupContext)
 
+    const Form = useNavigate()
     const signupBtn = () => {
-        wrapper({marginTop: '5.5%'})
-        signupForm({ display: 'block' })
-        setloginForm({marginLeft: '-65%'})
-        setloginText({marginLeft: '-50%'})
+      setSignupFormBet(true)
+      Form('/signup')
     } 
     
     const loginBtn = () => {
-        setloginForm({display: 'block'})
-        setloginText({marginLeft: '0%'})
-        delysignup()
-      }
+      setSignupFormBet(false)
+      Form('/login')
+    }
       
-      function delysignup() {
-          setTimeout(()=>{
-            signupForm({ display: 'none' })
-            wrapper({marginTop: '13%'})
-        },300)
-      }
   return (
     <>
-    <div className='slide-controls'>
-        <input type='radio' name='slider' id='login' defaultChecked  />
+        <div className='slide-controls'>
+        <input type='radio' name='slider'  defaultChecked  />
         <input type='radio' name='slider' id='signup' />
-        <label onClick={() => loginBtn()} htmlFor='login' className='slide'>Login</label>
-        <label onClick={() => signupBtn()} htmlFor='signup' className='slide text-signup'>Signup</label>
-        <span className='slide-tab'></span>
-    </div>
+        <label style={textLogin} onClick={() => loginBtn()} htmlFor='login' className='slide'>Login</label>
+        <label style={textSignup} onClick={() => signupBtn()} htmlFor='signup' className='slide'>Signup</label>
+        <span style={slideTab} className='slide-tab'></span>
+        </div>
     </>
   )
 }
