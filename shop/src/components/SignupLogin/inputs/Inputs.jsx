@@ -115,11 +115,13 @@ function Inputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], m
       setModalContainer({
       display: 'block' ,
       description: 'Username must be in English lowercase letters',
-      icon: 'bi bi-exclamation-triangle-fill',
+      icon: 'bi bi-info-circle-fill',
+      backgroundColor: '#fad02c',
+      color: '#000'
      })
       setTimeout(()=>{
       setModalContainer({display: 'none'})
-      },4000)
+      },5000)
     }
   }
 

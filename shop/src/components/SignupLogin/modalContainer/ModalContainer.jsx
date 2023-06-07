@@ -9,8 +9,8 @@ function ModalContainer() {
   // The information entered is incorrect
   return (
     <>
-    <div style={modalContainer} id='modalContainer'>
-      <div style={{color: modalContainer.color}} className='modal-content'>
+    <div style={{display: modalContainer.display}} id='modalContainer'>
+      <div style={{color: modalContainer.color , backgroundColor: modalContainer.backgroundColor}} className='modal-content'>
         <i className={modalContainer.icon}></i>
         <p className='paragraf'>
           {modalContainer.description}

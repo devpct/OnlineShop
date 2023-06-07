@@ -17,8 +17,7 @@ function Signup() {
   const [clickBet , setClickBet] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
   const [isDone, setIsDone] = useState(false)
-  const submitDuration = 2000
-  const resetDuration = 1500
+
 
   useEffect(()=>{
     document.title = 'Signup | Online Shop'
@@ -28,27 +27,15 @@ function Signup() {
   const signup = (event) => {
     event.preventDefault()
     if (
-      inputsValue.nameLastname !== undefined
-      // inputsValue.username !== undefined &&
-      // inputsValue.password !== undefined &&
-      // inputsValue.email !== undefined &&
-      // inputsValue.phoneNumber !== undefined &&
-      // inputsValue.city !== undefined &&
-      // inputsValue.address !== undefined &&
-      // inputsValue.nationalCode !== undefined
+      inputsValue.nameLastname !== undefined &&
+      inputsValue.username !== undefined &&
+      inputsValue.password !== undefined &&
+      inputsValue.email !== undefined &&
+      inputsValue.phoneNumber !== undefined &&
+      inputsValue.city !== undefined &&
+      inputsValue.address !== undefined &&
+      inputsValue.nationalCode !== undefined
     ) {
-        if (isRunning || isDone) return
-        
-        setIsRunning(true)
-        
-        setTimeout(() => {
-          setIsRunning(false)
-          setIsDone(true)
-          
-        setTimeout(() => {
-          setIsDone(false)
-        }, resetDuration)
-      }, 600 + submitDuration)
       setClickBet(true)
     } else {
       setClickBet(false)
@@ -127,7 +114,14 @@ function Signup() {
     </div>
 
     <ModalContainer  />
-    <Add clickBet={clickBet} inputsValue={inputsValue}/>
+    <Add 
+    clickBet={clickBet} 
+    inputsValue={inputsValue}
+    isRunning={isRunning}
+    setIsRunning={setIsRunning}
+    isDone={isDone}
+    setIsDone={setIsDone}
+    />
     </>
   )
 }
