@@ -24,7 +24,6 @@ const FormProvider = ({ children }) => {
     const [textLogin , setTextLogin] = useState()
     const [textSignup , setTextSignup] = useState()
     const [modalContainer , setModalContainer] = useState({display: 'none'})
-    // const [signupData , setSignupData] = useState({})
     const [valueNullBet, setValueNullBet] = useState(false)
     
     useEffect(() => {
@@ -51,12 +50,7 @@ const FormProvider = ({ children }) => {
               }
             },300)
           }
-          console.log(signupFormBet)
     }, [signupFormBet])
-
-    // useEffect(()=>{
-    //   console.log(signupData);
-    // },[signupData])
 
     return(
         <SignupFormBetContext.Provider value={[signupFormBet, setSignupFormBet]}>
@@ -68,11 +62,9 @@ const FormProvider = ({ children }) => {
         <TextLoginContext.Provider value={[textLogin,setTextLogin]}>
         <TextSignupContext.Provider value={[textSignup,setTextSignup]}>
         <ModalContainerContext.Provider value={[modalContainer,setModalContainer]}>
-        {/* <SignupDataContext.Provider value={[signupData,setSignupData]}> */}
         <ValueNullBetContext.Provider value={[valueNullBet,setValueNullBet]}>
             {children}
         </ValueNullBetContext.Provider>
-        {/* </SignupDataContext.Provider> */}
         </ModalContainerContext.Provider>
         </TextSignupContext.Provider>
         </TextLoginContext.Provider>

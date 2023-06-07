@@ -1,16 +1,18 @@
-import React, { useContext, useEffect } from 'react';
-import { ValueNullBetContext } from '../../context/signupLogin/FormContext';
+import React, { useContext, useEffect } from 'react'
+import { ValueNullBetContext } from '../../context/signupLogin/FormContext'
+import { ModalContainerContext } from '../../context/signupLogin/FormContext'
+import { useNavigate} from 'react-router-dom'
 
 function Add({ inputsValue , clickBet }) {
 
   const [valueNullBet, setValueNullBet] = useContext(ValueNullBetContext)
+  const [modalContainer , setModalContainer] = useContext(ModalContainerContext)
+  const signupUser = useNavigate()
 
   useEffect(() => {
     if (clickBet) {
 
-      console.log('ali');
-
-      const currentdate = new Date();
+      const currentdate = new Date()
       const registrationTime = `${currentdate.getFullYear()}/${currentdate.getDate()}/${currentdate.getMonth()+ 1}  |  ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`
 
       let formData = {
@@ -23,7 +25,7 @@ function Add({ inputsValue , clickBet }) {
         'address': inputsValue.address,
         'nationalCode': inputsValue.nationalCode,
         'registrationTime': registrationTime,
-      };
+      }
 
       fetch('http://127.0.0.1:8000/signup', {
         method: 'POST',
@@ -33,19 +35,26 @@ function Add({ inputsValue , clickBet }) {
         body: JSON.stringify(formData),
       })
         .then((response) => {
-          console.log(response);
+          console.log(response)
         })
         .catch((error) => {
-          console.log(error);
-        });
+          console.log(error)
+        })
         setValueNullBet(true)
-    }
-  }, [clickBet]);
-
-  return (
-    <>
-    </>
-  );
+        setTimeout(()=>{
+        setModalContainer({
+          display: 'block' ,
+          description: 'Registration was successful',
+          icon: 'bi bi-check2-circle',
+          color: '#347d39'
+        })
+        },2300)
+        setTimeout(()=>{
+          setModalContainer({display: 'none'})
+          signupUser('/login')
+        },5000)
+      }
+    }, [clickBet])
 }
 
-export default Add;
+export default Add

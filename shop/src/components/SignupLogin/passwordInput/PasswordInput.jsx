@@ -1,30 +1,31 @@
 import React ,{useRef , useState , useEffect} from 'react'
+import './passwordInput.scss'
 
 function PasswordInput({ lPassBet , setInputsValue , value , Change}) {
 
-  const iconPass = useRef();
-  const password = useRef();
+  const iconPass = useRef()
+  const password = useRef()
 
-  const [alertPass, setAlertPass] = useState();
+  const [alertPass, setAlertPass] = useState()
 
   const iconPassword = () => { 
     if (iconPass.current.className === 'icon-password  bi-eye-slash-fill') {
       iconPass.current.className = 'icon-password  bi-eye-fill'
-      password.current.type = 'text';
+      password.current.type = 'text'
     } else {
       iconPass.current.className = 'icon-password  bi-eye-slash-fill'
-      password.current.type = 'password';
+      password.current.type = 'password'
     }
-  };
+  }
 
   const errorPassword = () => {
     if (password.current.value.length !== 8) {
-      setAlertPass({ display: 'block' });
+      setAlertPass({ display: 'block' })
     }
     if (password.current.value === '') {
-      setAlertPass({ display: 'none' });
+      setAlertPass({ display: 'none' })
     }
-  };
+  }
 
   const errorPass = (event,lPassBet) => {
     if (!lPassBet) {
@@ -36,7 +37,7 @@ function PasswordInput({ lPassBet , setInputsValue , value , Change}) {
       })
     }
     if (password.current.value.length === 8 || password.current.value.length === 0) {
-      setAlertPass({ display: 'none' });
+      setAlertPass({ display: 'none' })
     }
   }
 
@@ -65,7 +66,7 @@ function PasswordInput({ lPassBet , setInputsValue , value , Change}) {
         </p>
       )}
     </>
-  );
+  )
 }
 
 

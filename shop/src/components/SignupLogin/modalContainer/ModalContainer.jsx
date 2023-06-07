@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { ModalContainerContext } from '../../../context/signupLogin/FormContext'
+import './modalContainer.scss'
 
 function ModalContainer() {
   const [modalContainer , setModalContainer] = useContext(ModalContainerContext)
@@ -9,7 +10,7 @@ function ModalContainer() {
   return (
     <>
     <div style={modalContainer} id='modalContainer'>
-      <div className='modal-content'>
+      <div style={{color: modalContainer.color}} className='modal-content'>
         <i className={modalContainer.icon}></i>
         <p className='paragraf'>
           {modalContainer.description}

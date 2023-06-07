@@ -1,14 +1,12 @@
 import React, { useEffect , useContext } from 'react'
 import { useNavigate} from 'react-router-dom'
-import RegistrationEntrie from '../../components/SignupLogin/registrationEntrie/RegistrationEntrie'
 import ModalContainer from '../../components/SignupLogin/modalContainer/ModalContainer'
-import PasswordInput from '../../components/SignupLogin/passwordInput/PasswordInput'
 import SlideControls from '../../components/SignupLogin/slideControls/SlideControls'
 import TitleText from '../../components/SignupLogin/titleText/TitleText'
+import Inputs from '../../components/SignupLogin/inputs/Inputs'
 import { WrapperContext } from '../../context/signupLogin/FormContext'
 import { LoginFormContext } from '../../context/signupLogin/FormContext'
-import ComponentInputs from '../../components/SignupLogin/ComponentInputs'
-import './login.css'
+import './login.scss'
 
 function Login() {
 
@@ -39,12 +37,12 @@ function Login() {
               <div className='form-inner'>
               <form style={loginForm} className='login'>
 
-              <ComponentInputs
+              <Inputs
               labels={['User Name']} 
               maxLengths={[22]}
               />
 
-              <ComponentInputs
+              <Inputs
               types={['password']}
               lPassBet={true}
               />

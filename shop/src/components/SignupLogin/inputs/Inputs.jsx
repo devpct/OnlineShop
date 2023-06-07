@@ -1,9 +1,10 @@
 import React ,{ useState , useRef , useEffect , useContext} from 'react'
-import PasswordInput from '../../components/SignupLogin/passwordInput/PasswordInput'
-import { ModalContainerContext } from '../../context/signupLogin/FormContext'
-import { ValueNullBetContext } from '../../context/signupLogin/FormContext'
+import PasswordInput from '../passwordInput/PasswordInput'
+import { ModalContainerContext } from '../../../context/signupLogin/FormContext'
+import { ValueNullBetContext } from '../../../context/signupLogin/FormContext'
+import './inputs.scss'
 
-function ComponentInputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], maxLengths = [], minLengths = [], labels = [], idLabels = [], lPassBet = false , setInputsValue , inputsValue}) {
+function Inputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], maxLengths = [], minLengths = [], labels = [], idLabels = [], lPassBet = false , setInputsValue , inputsValue}) {
 
 
   const [values, setValues] = useState(value)
@@ -169,9 +170,9 @@ function ComponentInputs({ inputsCount, ids = [], value = [], types = ['text', '
                 onKeyUp={() => inputKeyUp(labels[i], i)}
                 value={values[i] || ''}
                 onChange={(e) => {
-                      const newInputValues = [...values];
-                      newInputValues[i] = e.target.value;
-                      setValues(newInputValues);
+                      const newInputValues = [...values]
+                      newInputValues[i] = e.target.value
+                      setValues(newInputValues)
                 }
                 }
               ></textarea>
@@ -182,9 +183,9 @@ function ComponentInputs({ inputsCount, ids = [], value = [], types = ['text', '
               setInputsValue={setInputsValue}
               value={values[i] || ''}
               Change={(e) => {
-                    const newInputValues = [...values];
-                    newInputValues[i] = e.target.value;
-                    setValues(newInputValues);
+                    const newInputValues = [...values]
+                    newInputValues[i] = e.target.value
+                    setValues(newInputValues)
                 }
               }
               />
@@ -202,9 +203,9 @@ function ComponentInputs({ inputsCount, ids = [], value = [], types = ['text', '
                   : labels[i] === 'National Code'
                   ? (event) => handleNationalCodeChange(event, i)
                   : (e) => {
-                      const newInputValues = [...values];
-                      newInputValues[i] = e.target.value;
-                      setValues(newInputValues);
+                      const newInputValues = [...values]
+                      newInputValues[i] = e.target.value
+                      setValues(newInputValues)
                     }
                 }
                 onKeyPress={labels[i] === 'User Name' ? (event) => lowercaseLetters(event) : null}
@@ -232,4 +233,4 @@ function ComponentInputs({ inputsCount, ids = [], value = [], types = ['text', '
   )
 }
 
-export default ComponentInputs
+export default Inputs

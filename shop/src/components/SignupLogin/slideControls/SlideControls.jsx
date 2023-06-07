@@ -4,6 +4,7 @@ import { SignupFormBetContext } from '../../../context/signupLogin/FormContext'
 import { SlideTabContext } from '../../../context/signupLogin/FormContext'
 import { TextLoginContext } from '../../../context/signupLogin/FormContext'
 import { TextSignupContext } from '../../../context/signupLogin/FormContext'
+import './slideControls.scss'
 
 function SlideControls() {
   

@@ -1,5 +1,6 @@
 import React, { useContext , useEffect} from 'react'
 import { LoginTextContext } from '../../../context/signupLogin/FormContext'
+import './titleText.scss'
 
 function TitleText() {
 

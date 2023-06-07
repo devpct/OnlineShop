@@ -5,10 +5,9 @@ import SlideControls from '../../components/SignupLogin/slideControls/SlideContr
 import TitleText from '../../components/SignupLogin/titleText/TitleText'
 import { SignupFormContext } from '../../context/signupLogin/FormContext'
 import { SignupFormBetContext } from '../../context/signupLogin/FormContext'
-import ComponentInputs from '../../components/SignupLogin/ComponentInputs'
+import Inputs from '../../components/SignupLogin/inputs/Inputs'
 import Add from '../../hooks/customer/add'
-
-import './signup.css'
+import './signup.scss'
 
 function Signup() {
 
@@ -16,10 +15,10 @@ function Signup() {
   const [signupFormBet, setSignupFormBet] = useContext(SignupFormBetContext)
   const [inputsValue, setInputsValue] = useState()
   const [clickBet , setClickBet] = useState(false)
-  const [isRunning, setIsRunning] = useState(false);
-  const [isDone, setIsDone] = useState(false);
-  const submitDuration = 2000;
-  const resetDuration = 1500;
+  const [isRunning, setIsRunning] = useState(false)
+  const [isDone, setIsDone] = useState(false)
+  const submitDuration = 2000
+  const resetDuration = 1500
 
   useEffect(()=>{
     document.title = 'Signup | Online Shop'
@@ -27,32 +26,32 @@ function Signup() {
   },[signupFormBet])
 
   const signup = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     if (
-      inputsValue.username !== undefined &&
-      inputsValue.nameLastname !== undefined &&
-      inputsValue.password !== undefined &&
-      inputsValue.email !== undefined &&
-      inputsValue.phoneNumber !== undefined &&
-      inputsValue.city !== undefined &&
-      inputsValue.address !== undefined &&
-      inputsValue.nationalCode !== undefined
+      inputsValue.nameLastname !== undefined
+      // inputsValue.username !== undefined &&
+      // inputsValue.password !== undefined &&
+      // inputsValue.email !== undefined &&
+      // inputsValue.phoneNumber !== undefined &&
+      // inputsValue.city !== undefined &&
+      // inputsValue.address !== undefined &&
+      // inputsValue.nationalCode !== undefined
     ) {
-        if (isRunning || isDone) return;
+        if (isRunning || isDone) return
         
-        setIsRunning(true);
+        setIsRunning(true)
         
         setTimeout(() => {
-          setIsRunning(false);
-          setIsDone(true);
+          setIsRunning(false)
+          setIsDone(true)
           
         setTimeout(() => {
-          setIsDone(false);
-        }, resetDuration);
-      }, 600 + submitDuration);
-      setClickBet(true);
+          setIsDone(false)
+        }, resetDuration)
+      }, 600 + submitDuration)
+      setClickBet(true)
     } else {
-      setClickBet(false);
+      setClickBet(false)
     }
   }
   
@@ -70,7 +69,7 @@ function Signup() {
       <div className="form-inner">
 
       <form style={signupForm} className="signup">
-        <ComponentInputs
+        <Inputs
         inputsCount={2}
         labels={['Name and Last Name','User Name']}
         maxLengths={[35,23]}
@@ -78,7 +77,7 @@ function Signup() {
         setInputsValue={setInputsValue}
         />
 
-        <ComponentInputs
+        <Inputs
         inputsCount={2}
         labels={['Paasword','Email']} 
         types={['password','email']}
@@ -88,7 +87,7 @@ function Signup() {
         setInputsValue={setInputsValue}
         />
 
-        <ComponentInputs
+        <Inputs
         inputsCount={2}
         labels={['Phone Number','City']} 
         ids={['phoneNum']}
@@ -99,14 +98,14 @@ function Signup() {
         setInputsValue={setInputsValue}
         />
 
-        <ComponentInputs
+        <Inputs
         labels={['Address']}
         maxLengths={[120]} 
         inputsValue={inputsValue}
         setInputsValue={setInputsValue}
         />
 
-        <ComponentInputs
+        <Inputs
         labels={['National Code']} 
         maxLengths={[10]}
         minLengths={[8]} 
@@ -130,7 +129,7 @@ function Signup() {
     <ModalContainer  />
     <Add clickBet={clickBet} inputsValue={inputsValue}/>
     </>
-  );
+  )
 }
 
 export default Signup
