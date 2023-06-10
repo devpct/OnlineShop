@@ -4,7 +4,7 @@ import { ValueNullBetContext } from '../../context/signupLogin/FormContext'
 import { ModalContainerContext } from '../../context/signupLogin/FormContext'
 import { SignupFormBetContext } from '../../context/signupLogin/FormContext'
 
-function Add({ inputsValue , clickBet , isRunning , setIsRunning , isDone , setIsDone}) {
+function Add({ inputsValueSignup , clickBetSignup , isRunning , setIsRunning , isDone , setIsDone}) {
 
   const [valueNullBet, setValueNullBet] = useContext(ValueNullBetContext)
   const [modalContainer , setModalContainer] = useContext(ModalContainerContext)
@@ -14,20 +14,20 @@ function Add({ inputsValue , clickBet , isRunning , setIsRunning , isDone , setI
   const signupUser = useNavigate()
 
   useEffect(() => {
-    if (clickBet) {
+    if (clickBetSignup) {
 
       const currentdate = new Date()
       const registrationTime = `${currentdate.getFullYear()}/${currentdate.getDate()}/${currentdate.getMonth()+ 1}  |  ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`
 
       let formData = {
-        'username': inputsValue.username,
-        'nameLastname': inputsValue.nameLastname,
-        'password': inputsValue.password,
-        'email': inputsValue.email,
-        'phoneNumber': '0'+inputsValue.phoneNumber,
-        'city': inputsValue.city,
-        'address': inputsValue.address,
-        'nationalCode': inputsValue.nationalCode,
+        'username': inputsValueSignup.username,
+        'nameLastname': inputsValueSignup.nameLastname,
+        'password': inputsValueSignup.password,
+        'email': inputsValueSignup.email,
+        'phoneNumber': '0'+inputsValueSignup.phoneNumber,
+        'city': inputsValueSignup.city,
+        'address': inputsValueSignup.address,
+        'nationalCode': inputsValueSignup.nationalCode,
         'registrationTime': registrationTime,
       }
 
@@ -86,7 +86,7 @@ function Add({ inputsValue , clickBet , isRunning , setIsRunning , isDone , setI
         })
 
       }
-    }, [clickBet])
+    }, [clickBetSignup])
 }
 
 export default Add

@@ -2,9 +2,10 @@ import React ,{ useState , useRef , useEffect , useContext} from 'react'
 import PasswordInput from '../passwordInput/PasswordInput'
 import { ModalContainerContext } from '../../../context/signupLogin/FormContext'
 import { ValueNullBetContext } from '../../../context/signupLogin/FormContext'
+import { AlertunameContext } from '../../../context/signupLogin/FormContext'
 import './inputs.scss'
 
-function Inputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], maxLengths = [], minLengths = [], labels = [], idLabels = [], lPassBet = false , setInputsValue , inputsValue}) {
+function Inputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], maxLengths = [], minLengths = [], labels = [], idLabels = [], lPassBet = false , setinputsValueSignup , userNameSignup = false , setinputsValueLogin}) {
 
 
   const [values, setValues] = useState(value)
@@ -12,7 +13,7 @@ function Inputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], m
   const [inputLabels, setInputLabels] = useState(Array(inputsCount).fill({ top: '50%' }))
   const [modalContainer , setModalContainer] = useContext(ModalContainerContext)
   const [valueNullBet, setValueNullBet] = useContext(ValueNullBetContext)
-
+  const [alertuname, setAlertuname] = useContext(AlertunameContext)
 
   useEffect(()=>{
     if (valueNullBet) {
@@ -39,60 +40,69 @@ function Inputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], m
 
   const inputKeyUp = (label,i) => {
     if (label === 'Name and Last Name') {
-      setInputsValue((prevInputsValue) => {
+      setinputsValueSignup((previnputsValueSignup) => {
         return {
-          ...prevInputsValue,
+          ...previnputsValueSignup,
           nameLastname: inputRefs.current[i].value
         }
       })
     }
-    else if (label === 'User Name') {
-      setInputsValue((prevInputsValue) => {
+    else if (userNameSignup) {
+      setinputsValueSignup((previnputsValueSignup) => {
         return {
-          ...prevInputsValue,
+          ...previnputsValueSignup,
           username: inputRefs.current[i].value
         }
       })
     }
     else if (label === 'Email') {
-      setInputsValue((prevInputsValue) => {
+      setinputsValueSignup((previnputsValueSignup) => {
         return {
-          ...prevInputsValue,
+          ...previnputsValueSignup,
           email: inputRefs.current[i].value
         }
       })
     }
     else if (label === 'Phone Number') {
-      setInputsValue((prevInputsValue) => {
+      setinputsValueSignup((previnputsValueSignup) => {
         return {
-          ...prevInputsValue,
+          ...previnputsValueSignup,
           phoneNumber: inputRefs.current[i].value
         }
       })
     }
     else if (label === 'City') {
-      setInputsValue((prevInputsValue) => {
+      setinputsValueSignup((previnputsValueSignup) => {
         return {
-          ...prevInputsValue,
+          ...previnputsValueSignup,
           city: inputRefs.current[i].value
         }
       })
     }
     else if (label === 'Address') {
-      setInputsValue((prevInputsValue) => {
+      setinputsValueSignup((previnputsValueSignup) => {
         return {
-          ...prevInputsValue,
+          ...previnputsValueSignup,
           address: inputRefs.current[i].value
         }
       })
     }
     else if (label === 'National Code') {
-      setInputsValue((prevInputsValue) => {
+      setinputsValueSignup((previnputsValueSignup) => {
         return {
-          ...prevInputsValue,
+          ...previnputsValueSignup,
           nationalCode: inputRefs.current[i].value
         }
       })
+    }else if (!userNameSignup) {
+      if (label === 'User Name') {
+        setinputsValueLogin((previnputsValueLogin) => {
+        return {
+          ...previnputsValueLogin,
+          username: inputRefs.current[i].value
+        }
+      })
+    }
     }
     if (inputRefs.current[i].value === '') {
       const newInputLabels = [...inputLabels]
@@ -181,8 +191,8 @@ function Inputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], m
             ) : types[i] === 'password' ? (
               <PasswordInput 
               lPassBet={lPassBet}
-              inputsValue={inputsValue}
-              setInputsValue={setInputsValue}
+              setinputsValueSignup={setinputsValueSignup}
+              setinputsValueLogin={setinputsValueLogin}
               value={values[i] || ''}
               Change={(e) => {
                     const newInputValues = [...values]
@@ -228,6 +238,7 @@ function Inputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], m
               </label>
             ) : null}
             {labels[i] === 'Phone Number' && <p className='Ne'>+98</p>}
+            {labels[i] === 'User Name' && <p style={{display: alertuname.display}} id="alertuname">This name has already been used</p>}
           </div>
         ))}
       </div>

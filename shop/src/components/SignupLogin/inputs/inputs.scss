@@ -1,0 +1,164 @@
+$button-color: rgb(35, 35, 35);
+$theme:rgb(252, 185, 0);
+
+.field {
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+    input {
+        color: $button-color;
+        height: 100%;
+        outline: none;
+        font-size: 17px;
+        padding-left: 20px;
+        border: 1px solid lightgrey;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        padding: 0 0.8rem;
+        &:focus {
+            border-color: rgb(252, 185, 0);
+        }
+&::selection{
+  background: $theme;
+  color: $button-color;
+}
+    }
+input[type="submit"] {
+color: $button-color;
+font-size: 20px;
+font-weight: 500;
+padding-left: 0px;
+border: none;
+cursor: pointer;
+background: $theme;
+font-weight: bold;
+}
+    label {
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        color: #999999;
+        font-weight: 400;
+        font-size: 17px;
+        pointer-events: none;
+        transform: translateY(-50%);
+        transition: all 0.3s ease;
+    }
+}
+
+.field {
+    input {
+        &:valid {
+            ~ {
+                label {
+                    top: 0%;
+                    font-size: 14px;
+                    color: #999999;
+                    background: #fff;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+        &:focus {
+            ~ {
+                label {
+                    top: 0%;
+                    font-size: 14px;
+                    color: rgb(211, 157, 9);
+                    background: #fff;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+}
+
+.form-inner {
+        input{
+            width: 100%;
+        }
+        .tow-box{
+            position: relative;
+            display: flex;
+            column-gap: 0.5rem;
+            input{
+                width: 100%;
+            }
+            label {
+                font-size: 14px;
+            }
+            .cpass label{
+                font-size: 13px;
+            }
+            .Ne{
+                position: absolute;
+                top: 50%;
+                left: 10px;
+                color: #999999;
+                font-size: 17px;
+                transform: translateY(-50%);
+                z-index: 5;
+            }
+            #phoneNum{
+                padding-left: 3rem;
+            }
+            #lphoneNum {
+                top: 2%;
+                font-size: 14px;
+                background-color: #fff;
+            }
+        }
+        textarea{
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.5rem;
+            resize: none;
+            color: $button-color;
+            outline: none;
+            border: 1px solid lightgrey;
+            border-radius: 18px;
+            transition: all 0.3s ease;
+            &:focus {
+                border-color: rgb(252, 185, 0);
+            }
+    &::selection{
+      background: $theme;
+      color: $button-color;
+    }
+    &:valid {
+        ~ {
+            label {
+                top: 55%;
+                font-size: 14px;
+                color: #999999;
+                background: #fff;
+                transform: translateY(-50%);
+            }
+        }
+    }
+    &:focus {
+        ~ {
+            label {
+                top: -5%;
+                font-size: 14px;
+                color: rgb(211, 157, 9);
+                background: #Fff;
+                transform: translateY(-50%);
+            }
+        }
+    }
+        }
+}
+
+#alertuname{
+	position: absolute;
+	top: 100%;
+	z-index: 5;
+	color: rgb(187, 0, 0);
+	font-size: 0.7rem;
+	animation: shake 0.5s ease-in-out ;
+	animation-timing-function: cubic-bezier(0.36, 0.07, 0.19, 0.97);
+	animation-iteration-count: 1.5;
+	transition: all 1s;
+}

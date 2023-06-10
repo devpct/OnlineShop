@@ -5,16 +5,19 @@ import SlideControls from '../../components/SignupLogin/slideControls/SlideContr
 import TitleText from '../../components/SignupLogin/titleText/TitleText'
 import { SignupFormContext } from '../../context/signupLogin/FormContext'
 import { SignupFormBetContext } from '../../context/signupLogin/FormContext'
+import { AlertunameContext } from '../../context/signupLogin/FormContext'
 import Inputs from '../../components/SignupLogin/inputs/Inputs'
 import Add from '../../hooks/customer/add'
+import Get from '../../hooks/customer/get'
 import './signup.scss'
 
 function Signup() {
 
   const [signupForm , setSignupForm] = useContext(SignupFormContext)
   const [signupFormBet, setSignupFormBet] = useContext(SignupFormBetContext)
-  const [inputsValue, setInputsValue] = useState()
-  const [clickBet , setClickBet] = useState(false)
+  const [alertuname, setAlertuname] = useContext(AlertunameContext)
+  const [inputsValueSignup, setinputsValueSignup] = useState()
+  const [clickBetSignup , setclickBetSignup] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
   const [isDone, setIsDone] = useState(false)
 
@@ -27,18 +30,19 @@ function Signup() {
   const signup = (event) => {
     event.preventDefault()
     if (
-      inputsValue.nameLastname !== undefined &&
-      inputsValue.username !== undefined &&
-      inputsValue.password !== undefined &&
-      inputsValue.email !== undefined &&
-      inputsValue.phoneNumber !== undefined &&
-      inputsValue.city !== undefined &&
-      inputsValue.address !== undefined &&
-      inputsValue.nationalCode !== undefined
+      inputsValueSignup.nameLastname !== undefined &&
+      inputsValueSignup.username !== undefined &&
+      inputsValueSignup.password !== undefined &&
+      inputsValueSignup.email !== undefined &&
+      inputsValueSignup.phoneNumber !== undefined &&
+      inputsValueSignup.city !== undefined &&
+      inputsValueSignup.address !== undefined &&
+      inputsValueSignup.nationalCode !== undefined &&
+      alertuname.display !== 'block'
     ) {
-      setClickBet(true)
+      setclickBetSignup(true)
     } else {
-      setClickBet(false)
+      setclickBetSignup(false)
     }
   }
   
@@ -60,8 +64,8 @@ function Signup() {
         inputsCount={2}
         labels={['Name and Last Name','User Name']}
         maxLengths={[35,23]}
-        inputsValue={inputsValue}
-        setInputsValue={setInputsValue}
+        setinputsValueSignup={setinputsValueSignup}
+        userNameSignup={true}
         />
 
         <Inputs
@@ -70,8 +74,7 @@ function Signup() {
         types={['password','email']}
         maxLengths={[
           35]}
-        inputsValue={inputsValue}
-        setInputsValue={setInputsValue}
+        setinputsValueSignup={setinputsValueSignup}
         />
 
         <Inputs
@@ -81,23 +84,20 @@ function Signup() {
         maxLengths={[11,15]}
         minLengths={[11,2]}
         idLabels={['lphoneNum']}
-        inputsValue={inputsValue}
-        setInputsValue={setInputsValue}
+        setinputsValueSignup={setinputsValueSignup}
         />
 
         <Inputs
         labels={['Address']}
         maxLengths={[120]} 
-        inputsValue={inputsValue}
-        setInputsValue={setInputsValue}
+        setinputsValueSignup={setinputsValueSignup}
         />
 
         <Inputs
         labels={['National Code']} 
         maxLengths={[10]}
         minLengths={[8]} 
-        inputsValue={inputsValue}
-        setInputsValue={setInputsValue}
+        setinputsValueSignup={setinputsValueSignup}
         />
 
     <div className="field">
@@ -115,13 +115,14 @@ function Signup() {
 
     <ModalContainer  />
     <Add 
-    clickBet={clickBet} 
-    inputsValue={inputsValue}
+    clickBetSignup={clickBetSignup} 
+    inputsValueSignup={inputsValueSignup}
     isRunning={isRunning}
     setIsRunning={setIsRunning}
     isDone={isDone}
     setIsDone={setIsDone}
     />
+    <Get inputsValueSignup={inputsValueSignup}/>
     </>
   )
 }

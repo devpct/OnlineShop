@@ -1,4 +1,4 @@
-import React, { useEffect , useContext } from 'react'
+import React, { useEffect , useContext , useState } from 'react'
 import { useNavigate} from 'react-router-dom'
 import ModalContainer from '../../components/SignupLogin/modalContainer/ModalContainer'
 import SlideControls from '../../components/SignupLogin/slideControls/SlideControls'
@@ -6,14 +6,17 @@ import TitleText from '../../components/SignupLogin/titleText/TitleText'
 import Inputs from '../../components/SignupLogin/inputs/Inputs'
 import { WrapperContext } from '../../context/signupLogin/FormContext'
 import { LoginFormContext } from '../../context/signupLogin/FormContext'
+import Get from '../../hooks/customer/get'
 import './login.scss'
 
 function Login() {
 
   const [wrapper , setWrapper] = useContext(WrapperContext)
   const [loginForm , setLoginForm] = useContext(LoginFormContext)
+  const [inputsValueLogin, setinputsValueLogin] = useState()
+  const [clickBetLogin , setclickBetLogin] = useState(false)
   const loginUser = useNavigate()
-  
+
   useEffect(() => {
     document.title = 'Login | Online Shop'
 
@@ -22,6 +25,18 @@ function Login() {
       loginUser('/login')
     }
   }, [])
+
+  const login = (event)=>{
+    event.preventDefault()
+    if (
+      inputsValueLogin.username !== undefined &&
+      inputsValueLogin.password !== undefined
+    ) {
+      setclickBetLogin(true)
+    }else{
+      setclickBetLogin(false)
+    }
+}
 
   return (
     <>
@@ -40,15 +55,17 @@ function Login() {
               <Inputs
               labels={['User Name']} 
               maxLengths={[22]}
+              setinputsValueLogin={setinputsValueLogin}
               />
 
               <Inputs
               types={['password']}
               lPassBet={true}
+              setinputsValueLogin={setinputsValueLogin}
               />
 
                 <div className='field'>
-                <input  type='submit' value='Login'/>
+                <input type='submit' value='Login' onClick={login}/>
                 </div>
               </form>
               </div>
@@ -56,9 +73,14 @@ function Login() {
           </div>
         </div>
       <ModalContainer />
+      <Get 
+      inputsValueLogin={inputsValueLogin}
+      clickBetLogin={clickBetLogin}
+      setclickBetLogin={setclickBetLogin}
+      />
     </>
-  );
+  )
 }
 
-export default Login;
+export default Login
 

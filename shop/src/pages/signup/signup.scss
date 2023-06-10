@@ -1,0 +1,128 @@
+$theme:rgb(252, 185, 0);
+
+:root {
+	--hue: 223;
+	--bg2: hsl(var(--hue),10%,80%);
+  
+}
+
+.wrapper {
+	margin-top: 5%;
+	// max-width: 28rem;
+	.form-inner {
+		.signup{			
+			width: 80%;
+			margin-left: -50%;
+		}
+	}
+}
+
+// button signup
+.btn {
+	margin: auto;
+	border: 0;
+	background-color: var(--bg2);
+	border-radius: 1.5em;
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 3em;
+	transition: width 0.3s ease-in-out;
+	cursor: pointer;
+	font-size: 1.1rem;
+	font-weight: bold;
+  }
+  .btn:not(:disabled):active {
+	transform: translateY(0.1em);
+  }
+  .btn__text {
+	background-image: $theme;
+	border-radius: inherit;
+	color: rgb(35, 35, 35);
+	display: inline-block;
+	padding: 0.75em 1.5em;
+	transition:
+	  background-color 0.15s linear,
+	  color 0.15s 0.3s ease-in-out;
+	width: 100%;
+  }
+  .btn:not(:disabled):focus .btn__text,
+  .btn:not(:disabled):hover .btn__text {
+	background-color: $theme;
+  }
+  .btn__progress {
+	overflow: visible;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 3em;
+	height: 3em;
+	visibility: hidden;
+  }
+  .btn__progress-track {
+	r: 12px;
+	stroke: var(--bg2);
+	stroke-width: 24;
+  }
+  .btn__progress-fill {
+	stroke: $theme;
+	stroke-dashoffset: 125.66;
+  }
+  .btn__progress-check {
+	stroke: hsl(0,0%,100%);
+	stroke-dashoffset: 34;
+  }
+  
+  /* Both states */
+  .btn--running,
+  .btn--done {
+	outline: none;
+	pointer-events: none;
+	width: 3em;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+  }
+  .btn--running .btn__text,
+  .btn--done .btn__text {
+	color: transparent;
+	transition:
+	  background-color 0.3s ease-in-out,
+	  visibility 0.3s steps(1);
+  }
+  .btn--running .btn__progress,
+  .btn--done .btn__progress {
+	visibility: visible;
+  }
+  
+  /* Running state */
+  .btn--running .btn__text {
+	background-color: $theme;
+	visibility: hidden;
+  }
+  .btn--running .btn__progress {
+	transition: visibility 0.3s 0.3s steps(1,start);
+  }
+  .btn--running .btn__progress-track {
+	r: 20px;
+	stroke-width: 8;
+	transition:
+	  r 0.3s 0.3s ease-in-out,
+	  stroke-width 0.3s 0.3s ease-in-out;
+  }
+  .btn--running .btn__progress-fill {
+	stroke-dashoffset: 0;
+	transition: stroke-dashoffset 2s 0.6s linear;
+  }
+  
+  /* Done state */
+  .btn--done .btn__progress-track {
+	stroke: $theme;
+	transition:
+	  r 0.3s ease-in-out,
+	  stroke-width 0.3s ease-in-out;
+  }
+  .btn--done .btn__progress-check {
+	stroke-dashoffset: 0;
+	transition: stroke-dashoffset 0.3s 0.3s ease-out;
+}

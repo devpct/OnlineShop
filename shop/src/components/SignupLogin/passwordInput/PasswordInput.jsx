@@ -1,7 +1,7 @@
 import React ,{useRef , useState , useEffect} from 'react'
 import './passwordInput.scss'
 
-function PasswordInput({ lPassBet , setInputsValue , value , Change}) {
+function PasswordInput({ lPassBet , setinputsValueSignup , setinputsValueLogin , value , Change}) {
 
   const iconPass = useRef()
   const password = useRef()
@@ -29,9 +29,17 @@ function PasswordInput({ lPassBet , setInputsValue , value , Change}) {
 
   const errorPass = (event,lPassBet) => {
     if (!lPassBet) {
-      setInputsValue((prevInputsValue) => {
+      setinputsValueSignup((previnputsValueSignup) => {
         return {
-          ...prevInputsValue,
+          ...previnputsValueSignup,
+          password: event.target.value
+        }
+      })
+    }
+    if (lPassBet) {
+      setinputsValueLogin((previnputsValueLogin) => {
+        return {
+          ...previnputsValueLogin,
           password: event.target.value
         }
       })

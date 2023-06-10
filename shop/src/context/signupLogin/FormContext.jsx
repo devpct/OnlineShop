@@ -11,6 +11,7 @@ export const TextSignupContext = createContext()
 export const SignupDataContext = createContext()
 export const ModalContainerContext = createContext()
 export const ValueNullBetContext = createContext()
+export const AlertunameContext = createContext()
 
 
 const FormProvider = ({ children }) => {
@@ -25,6 +26,7 @@ const FormProvider = ({ children }) => {
     const [textSignup , setTextSignup] = useState()
     const [modalContainer , setModalContainer] = useState({display: 'none'})
     const [valueNullBet, setValueNullBet] = useState(false)
+    const [alertuname, setAlertuname] = useState({display: 'none'})
     
     useEffect(() => {
           if(signupFormBet){
@@ -63,7 +65,9 @@ const FormProvider = ({ children }) => {
         <TextSignupContext.Provider value={[textSignup,setTextSignup]}>
         <ModalContainerContext.Provider value={[modalContainer,setModalContainer]}>
         <ValueNullBetContext.Provider value={[valueNullBet,setValueNullBet]}>
+        <AlertunameContext.Provider value={[alertuname,setAlertuname]}>
             {children}
+        </AlertunameContext.Provider>
         </ValueNullBetContext.Provider>
         </ModalContainerContext.Provider>
         </TextSignupContext.Provider>

@@ -26,3 +26,27 @@ def signup(request):
     user.save()
 
     return Response({'status': 'ok'})
+
+
+
+@api_view(['GET'])
+def customers(request):
+    customersData = Customers.objects.all()
+
+    data = []
+    for customer in customersData:
+        customer_data = {
+            'id': customer.customer_id,
+            'username': customer.username,
+            'nameLastname': customer.name_lastname,
+            'password': customer.password,
+            'email': customer.email,
+            'phoneNumber': customer.phone_number,
+            'city': customer.city,
+            'address': customer.address,
+            'nationalCode': customer.national_code,
+            'registrationTime': customer.registration_time,
+        }
+        data.append(customer_data)
+
+    return JsonResponse({'data': data})

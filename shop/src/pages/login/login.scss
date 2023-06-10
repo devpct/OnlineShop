@@ -1,0 +1,105 @@
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+body {
+	width: 100%;
+	margin: center;
+	background: #fff;
+}
+
+.container {
+	display: grid;
+	max-width: 80rem;
+	margin: auto;
+	padding: 0 1rem;
+	z-index: 2;
+}
+
+
+.wrapper {
+	margin: auto;
+	margin-top: 13%;
+	// max-width: 28rem;
+	border-radius: 15px;
+	box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+	overflow: hidden;
+	.form-container {
+		width: 100%;
+		overflow: hidden;
+		background: rgb(255, 255, 255);
+		padding: 0 30px;
+	.form-inner {
+		display: flex;
+		width: 170%;
+		.login{
+			width: 60%;
+			input{
+				width: 100%;
+			}
+		}
+		form {
+			max-width: 28rem;
+			transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		}
+	}
+	}
+	form {
+      padding: 1.5rem 30px;
+      padding-top: 0;
+	}
+}
+
+
+input[type="radio"] {
+	display: none;
+}
+
+.mooj{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -5;
+}
+
+
+/* Project Responsive */
+
+
+@media only screen and (max-width: 1200px) {
+    .container {
+      max-width: 80rem;
+    }
+}
+
+
+  
+  @media only screen and (max-width: 992px) {
+    .container {
+      max-width: 80rem;
+    }
+  }
+  
+  
+  
+  @media only screen and (max-width: 768px) {
+    .container {
+      max-width: 650px;
+    }
+	.login{
+		margin-left: 0%;
+		display: block;
+	}
+}
+
+
+@media only screen and (max-width: 576px) {
+    .container {
+      max-width: 100%;
+    }
+  }
