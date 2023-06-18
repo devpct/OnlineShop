@@ -5,9 +5,9 @@ const Context = ({ children }) => {
     
     return(
       <FormProvider>
-      <HomeProvider>
+      {/* <HomeProvider> */}
         {children}
-      </HomeProvider>
+      {/* </HomeProvider> */}
       </FormProvider>
     )
 

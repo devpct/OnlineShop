@@ -1,17 +1,34 @@
 import React, {useEffect , useContext} from 'react'
-import { CustomerContext } from '../../context/home/HomeContext'
-import './Home.scss'
+import { useNavigate} from 'react-router-dom'
+import MenuBurger from '../../components/Home/menuBurger/MenuBurger'
+import Loading from '../../components/Home/loading/Loading'
+import NavbarLeft from '../../components/Home/navbarLeft/NavbarLeft'
+import NavbarTop from '../../components/Home/navbarTop/NavbarTop'
+import HomePage from '../../components/Home/homePage/HomePage'
+
+import './home.scss'
 
 function Home() {
-  const [customer, setCustomer] = useContext(CustomerContext)
+  
+  const homeUser = useNavigate()
 
     useEffect(() => {
-    document.title = 'Home | Online Shop'
+      if(localStorage.getItem('username') === null){
+        document.body.style.display = 'none'
+        homeUser('/login')
+      }else{
+        document.body.style.display = 'block'
+        document.body.style.backgroundColor = '#f1f3f5'
+        document.title = 'Home | Online Shop'
+      }
     }, [])
 
   return (
     <>
-        <h1>mmd</h1>
+    <MenuBurger />
+    <NavbarLeft />
+    <NavbarTop />
+    <HomePage />
     </>
   )
 }

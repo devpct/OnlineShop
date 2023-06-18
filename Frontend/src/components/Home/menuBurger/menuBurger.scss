@@ -1,0 +1,42 @@
+$color-main: rgb(35, 35, 35);
+
+.menuBurger {
+    display: none;
+    transition: all 1s;
+    width: 20rem;
+    height: 100%;
+    position: fixed;
+    background-image: linear-gradient(to bottom right, var(--theme-color) 10%, var(--theme-color) 50%);
+    left: -20rem;
+    top: 0;
+    z-index: 10;
+    li{
+      width: 100%;
+      cursor: pointer;
+      list-style-type: none;
+      display: flex;
+      margin: 0.5rem 0.5rem;
+      font-size: 1.8rem;
+      margin: 0.5rem 1rem;
+      i{
+        margin-right: 0.8rem;
+      }
+    }
+    .data-userr{
+        margin: 1rem auto;
+        max-width: 90%;
+        cursor: pointer;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;  background-color: var(--theme-color);
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        border-radius: 0.8rem;
+        img{
+          width: 3rem;
+        }
+        p{
+          font-weight: 600;
+          color: $color-main;
+        }
+    }
+}

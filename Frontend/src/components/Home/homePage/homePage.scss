@@ -1,0 +1,285 @@
+$color-main: rgb(35, 35, 35);
+
+:root{
+    --swiper-theme-color:rgb(252, 185, 0);
+}
+
+.content{
+    overflow: hidden;
+    background: #fff;
+    margin: 1.5rem 0;
+    margin-left: 8.7rem;
+    margin-right: 1rem;
+    max-width: 85rem;
+    box-shadow: 0 0 40px rgba(0,0,0,0.03);
+    border-radius: 10px;
+    color: $color-main;
+}
+
+.swiper {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    background: #fff;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    cursor: pointer;
+  }
+
+  .box-top{
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .container-slider {
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 600px;
+    height: 10rem;
+    user-select: none;
+    box-shadow: 0px 10px 30px 0px rgba(0,0,0,.05);
+    border-radius: 35px;
+    top: 2.8rem;
+  }
+  
+  .slider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1800px;
+    transition: left 0.5s ease-in-out;
+    padding-left: 2.8rem;
+  }
+  
+  .slide {
+    transition: all 0.5s;
+    cursor: pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    box-shadow: 0px 10px 30px 0px rgba(0,0,0,.05);
+    overflow: hidden;
+    border-radius: 30px;
+    margin: 1rem;
+    float: left;
+    width: 130px;
+    height: 11rem;
+    user-select: none;
+    border: 1px solid var(--theme-color);
+    img{
+      position: absolute;
+      width: 100%;
+      height: 82%;
+      left: 0;
+    }
+    .text{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      text-align: center;
+      text-shadow: 5px 10px 30px #000;
+      background-color: rgba(255, 255, 255, 0.546);
+      padding: 0.5rem;
+      h1{
+        color: #000;
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        background-color: rgba(255, 255, 255, 0.313);
+      }
+      p{
+      color: rgb(31, 31, 31);
+      font-size: 80%;
+      margin-top: 1.5rem;
+      text-shadow: 5px 10px 10px #000;
+      }
+    }
+  }
+  
+  .slide:first-child{
+    width: 150px;
+    box-shadow: var(--theme-color) 0px 20px 70px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  
+  .arrow {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: var(--theme-color);
+    color: $color-main;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0px 10px 30px 0px rgba(0,0,0,.05);
+    display: grid;
+    i{
+      margin: auto;
+    }
+  }
+  
+  .arrow-left {
+    left: 1%;
+  }
+  
+  .arrow-right {
+    right: 1%;
+  }
+
+  @import url(https://fonts.googleapis.com/css?family=Cabin:400);
+
+.webdesigntuts-workshop {
+  text-align: center;
+  width: 100%;
+  margin: 2.5rem 0;
+}
+
+.webdesigntuts-workshop:after {
+  content: '';
+  display: block; 
+  height: 1px;
+  width: 100%;
+  background: $color-main;
+  background: #f1f3f5;  
+  margin-top:-1.1rem;
+}
+
+
+.webdesigntuts-workshop form {
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.12), 0 3px 1px 0 rgba(0, 0, 0, 0.04);
+  background: #f1f3f5;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 0px;
+  padding: 20px;
+  position: relative;
+  top: 1.5rem;
+  z-index: 1;
+}
+
+.webdesigntuts-workshop form div{
+  background: var(--theme-color);  
+  border-radius: 5px 0 0 5px;
+  box-shadow: 0 2px 0 var(--theme-color);
+  display: block;
+  float: left;
+  height: 40px;
+  width: 200px;
+  overflow: hidden;
+}
+.webdesigntuts-workshop form ul{
+  display: none;
+  position: absolute;
+  background: var(--theme-color);  
+  width: 200px;
+  top: 3.8rem;
+  z-index: 5;
+  border-radius: 0 0 5px 5px;
+  li{
+  z-index: 5;
+    color: $color-main;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1rem;
+    list-style-type: none;
+    text-align: left;
+    width: 100%;
+    border-bottom: 1px solid rgba(114, 114, 114, 0.683);
+  }
+  li:last-child{
+    border-bottom: 0;
+  }
+}
+
+.webdesigntuts-workshop input {
+  border: 0;
+  background: transparent;  
+  width: 100%;
+  height: 45px;
+  font-family: 'Cabin', helvetica, arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0 10px;
+  color: $color-main;
+  &::selection{
+    background-color: rgb(139, 108, 17);
+    color: $color-main;
+  }
+}
+
+.webdesigntuts-workshop input::-webkit-input-placeholder {
+   color: rgba(70, 70, 70, 0.795);
+}
+
+.webdesigntuts-workshop input:focus {
+  outline: none;
+}
+
+.webdesigntuts-workshop button {
+  background: #222;
+  background: linear-gradient(#333, #222);
+  box-sizing: border-box;
+  border: 1px solid #444;
+  border-left-color: #000;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 0 2px 0 #000;
+  color: var(--theme-color);
+  display: block;
+  float: left;
+  font-family: 'Cabin', helvetica, arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  height: 40px;
+  line-height: 40px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-shadow: 0 -1px 0 #000;
+  width: 80px;
+  cursor: pointer;
+} 
+
+.webdesigntuts-workshop button:hover,
+.webdesigntuts-workshop button:focus {
+  background: #292929;
+  background: linear-gradient(#393939, #292929);
+  outline: none;
+}
+
+.webdesigntuts-workshop button:active {
+  background: #292929;
+  background: linear-gradient(#393939, #292929);
+  box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
+  top: 1px;
+}
+
+
+.webdesigntuts-workshop input[type="search" i]::-webkit-search-cancel-button {
+  background-image: linear-gradient(#000,#fff);
+  cursor: pointer;
+  appearance: none;
+}

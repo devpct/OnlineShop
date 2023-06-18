@@ -3,14 +3,13 @@ import { useNavigate} from 'react-router-dom'
 import { AlertunameContext } from '../../context/signupLogin/FormContext'
 import { ModalContainerContext } from '../../context/signupLogin/FormContext'
 import { ValueNullBetContext } from '../../context/signupLogin/FormContext'
-import { CustomerContext } from '../../context/home/HomeContext'
+
 
 function Get({inputsValueSignup , clickBetLogin , inputsValueLogin , setclickBetLogin}) {
   const [customers, setCustomers] = useState([])
   const [alertuname, setAlertuname] = useContext(AlertunameContext)
   const [modalContainer , setModalContainer] = useContext(ModalContainerContext)
   const [valueNullBet, setValueNullBet] = useContext(ValueNullBetContext)
-  const [customer, setCustomer] = useContext(CustomerContext)
   const LoginUser = useNavigate()
 
   useEffect(() => {
@@ -71,7 +70,7 @@ useEffect(() => {
             color: '#fff'
           })
 
-          setCustomer({username: inputsValueLogin.username})
+          localStorage.setItem('username', inputsValueLogin.username);
 
           setTimeout(()=>{
             setModalContainer({display: 'none'})

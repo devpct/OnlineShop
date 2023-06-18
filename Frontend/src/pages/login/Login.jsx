@@ -18,11 +18,17 @@ function Login() {
   const loginUser = useNavigate()
 
   useEffect(() => {
-    document.title = 'Login | Online Shop'
-
-    let loginBet = false
-    if (!loginBet) {
-      loginUser('/login')
+    if(localStorage.getItem('username') === null){
+      document.body.style.display = 'block'
+      document.title = 'Login | Online Shop'
+      let loginBet = false
+      document.body.style.backgroundColor = '#fff'
+      if (!loginBet) {
+        loginUser('/login')
+      }
+    }else{
+      document.body.style.display = 'none'
+      loginUser('/home')
     }
   }, [])
 
@@ -40,7 +46,7 @@ function Login() {
 
   return (
     <>
-        <img className='mooj' src="../../../public/images/mooj.png" alt="Logo" />
+        <img className='mooj' src="../../../public/images/signupLogin/mooj.png" alt="Logo" />
 
         <div className='container'>
           <div style={wrapper} className='wrapper'>

@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+// $theme:rgb(252, 185, 0);
+$color-main: rgb(35, 35, 35);
+$timing: 0.2s;
+$transition: $timing ease all;
+$button-color: rgb(35, 35, 35);
+$border-color: #000;
+
+:root {
+  --theme-color: rgb(252, 185, 0);
+  --hue: 223;
+  --bg2: hsl(var(--hue),10%,80%);
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  max-width: 80rem;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+
+/* Project Responsive */
+
+
+@media only screen and (max-width: 1510px) {
+  .navbar-top , .content , .cart , .profile , .settings ,.messages{
+    margin-left: 7.7rem;
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .container {
+      max-width: 80rem;
+    }
+  }
+  
+  
+  
+  @media only screen and (max-width: 992px) {
+    .container {
+      max-width: 80rem;
+    }
+  }
+  
+  @media only screen and (max-width: 860px) {
+    .con-cards{
+      padding-left: 0;
+      justify-content: space-around;
+    }
+    .card {
+      max-width: 41%;
+    }
+  }
+  
+  
+  @media only screen and (max-width: 768px) {
+    .container {
+      max-width: 650px;
+    }
+    .swiper {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+    }
+    .container-slider {
+      max-width: 85%;
+    }
+    #titleCategory{
+      margin-left: 1.8rem;
+    }
+    .box-bottom {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  
+  @media only screen and (max-width: 640px) {
+    .container {
+      max-width: 100%;
+    }
+    .navbar{
+      display: none;
+    }
+    .navbar-top{
+      max-width: 100%;
+      margin-left: 0.8rem;
+      margin-right: 0.8rem;
+      justify-content: space-between;
+
+      .data-user{
+        display: none;
+      }
+    }
+    .content , .cart , .profile , .settings , .messages{
+      max-width: 100%;
+      margin-left: 0.8rem;
+      margin-right: 0.8rem;
+    }
+    .swiper {
+      position: relative;
+      width: 100%;
+      height: 45vh;
+    }
+    #nav-icon1{
+      display: block;
+      z-index: 10;
+    }
+    #menuBurger {
+      display: block;
+    }
+  }
+  
+  @media only screen and (max-width: 576px) {
+    .container {
+      max-width: 100%;
+    }
+    .swiper {
+      position: relative;
+      width: 100%;
+      height: 28vh;
+    }
+
+    .con-image img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .con-image {
+      max-width: 36%;
+      height: 150px;
+    }
+    .container-slider {
+      max-width: 90%;
+    }
+    .card {
+      max-width: 100%;
+      display: flex;
+      justify-content: space-around;
+    }
+    .con-textprice{
+      margin: 0 0.5rem;
+      max-width: 34%;
+    }
+    .con-conallinputbtns{
+      max-width: 30%;
+    }
+    .con-image .bg {
+      width: 46%;
+    }
+    .con-price {
+      padding: 0;
+      font-size: 1.1rem;
+      display: flex;
+    }
+  }
+
+  @media only screen and (max-width: 525px) {
+    .add {
+      font-size: 0.8rem;
+    }
+    .con-image {
+      max-width: 41%;
+      height: 120px;
+    }
+    .con-textprice{
+      max-width: 26%;
+    }
+    .con-conallinputbtns{
+      max-width: 34%;
+    }
+    .con-input-btns button {
+      min-width: 0;
+      max-width: 30px;
+      height: 30px;
+      border-radius: 0.8rem;
+    }
+    .con-price {
+      font-size: 1rem;
+    }
+    #menuBurger {
+      width: 70%;
+    }
+  }
