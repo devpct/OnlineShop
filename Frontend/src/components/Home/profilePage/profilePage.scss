@@ -1,0 +1,21 @@
+$color-main: rgb(35, 35, 35);
+
+.profile{
+    display: none;
+    overflow: hidden;
+    background: #fff;
+    margin: 1.5rem 0;
+    margin-left: 8.7rem;
+    margin-right: 1rem;
+    max-width: 85rem;
+    height: 79vh;
+    box-shadow: 0 0 40px rgba(0,0,0,0.03);
+    border-radius: 10px;
+    color: $color-main;
+    padding: 1rem;
+    font-family: 'Roboto',sans-serif;
+    h1{
+      margin-left: 1rem;
+      margin-top: 1rem;
+    }
+}

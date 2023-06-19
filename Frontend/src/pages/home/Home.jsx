@@ -5,7 +5,10 @@ import Loading from '../../components/Home/loading/Loading'
 import NavbarLeft from '../../components/Home/navbarLeft/NavbarLeft'
 import NavbarTop from '../../components/Home/navbarTop/NavbarTop'
 import HomePage from '../../components/Home/homePage/HomePage'
-
+import CartPage from '../../components/Home/cartPage/CartPage'
+import ProfilePage from '../../components/Home/profilePage/ProfilePage'
+import MessagesPage from '../../components/Home/messagesPage/MessagesPage'
+import SettingsPage from '../../components/Home/settingsPage/SettingsPage'
 import './home.scss'
 
 function Home() {
@@ -29,6 +32,10 @@ function Home() {
     <NavbarLeft />
     <NavbarTop />
     <HomePage />
+    <CartPage />
+    <ProfilePage />
+    <MessagesPage />
+    <SettingsPage />
     </>
   )
 }

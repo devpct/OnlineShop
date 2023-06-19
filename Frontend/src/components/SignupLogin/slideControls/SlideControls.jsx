@@ -1,9 +1,6 @@
 import React, { useContext , useEffect , useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { SignupFormBetContext } from '../../../context/signupLogin/FormContext'
-import { SlideTabContext } from '../../../context/signupLogin/FormContext'
-import { TextLoginContext } from '../../../context/signupLogin/FormContext'
-import { TextSignupContext } from '../../../context/signupLogin/FormContext'
+import { SignupFormBetContext , SlideTabContext , TextLoginContext , TextSignupContext } from '../../../context/signupLogin/FormContext'
 import './slideControls.scss'
 
 function SlideControls() {

@@ -1,33 +1,27 @@
-import React from 'react'
+import React,{ useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome , faGear} from '@fortawesome/free-solid-svg-icons'
+import { MenuBurgerContext , ClosePageContext , QtyMenuBurgerContext , MenuIconChangeContext } from '../../../context/home/HomeContext'
 import './menuBurger.scss'
 
 function MenuBurger() {
 
-  let $ = document
+  const [menuBurger , setMenuBurger] = useContext(MenuBurgerContext)
+  const [closePage , setClosePage] = useContext(ClosePageContext)
+  const [qtyMenuBurger, setQtyMenuBurger] = useContext(QtyMenuBurgerContext)
+  const [menuIconChange, setMenuIconChange] = useContext(MenuIconChangeContext)
 
-  const menuIcon = $.getElementById('nav-icon1')
-  let i = 0
-  // menuIcon.addEventListener('click',()=>{
-  //   if (i%2==0) {
-  //     menuIcon.classList.add('open')
-  //     menuBurger.style.display = 'block'
-  //     menuBurger.style.left = '0'
-  //     closePage.style.display = 'block'
-  //   }else{
-  //     menuIcon.classList.remove('open')
-  //     menuBurger.style.left = '-20rem'
-  //     closePage.style.display = 'none'
-  //   }
-  //   i++
-  // }) 
-  // closePage.addEventListener('click',()=>{
-  //   menuIcon.classList.remove('open')
-  //   menuBurger.style.left = '-20rem'
-  //   closePage.style.display = 'none'
-  //   i++
-  // })
+  const closeMenu = ()=>{
+    setMenuIconChange(true)
+    setMenuBurger({
+      left: '-20rem'
+    })
+    setClosePage({
+      display: 'none'
+    })
+    setQtyMenuBurger(prevI => prevI + 1)
+  }
+
 
   // Homee.addEventListener('click',()=>{
   //   homePage.style.display = 'block'
@@ -75,7 +69,7 @@ function MenuBurger() {
   // })
   return (
     <>
-    <div className='menuBurger'>
+    <div style={menuBurger} className='menuBurger'>
       <div className='data-userr'>
         <img src='../../../public/images/home/iconUser.png'/>
         <p>{localStorage.getItem('username')}</p>
@@ -107,7 +101,7 @@ function MenuBurger() {
         </li>
       </ul>
     </div>
-    <div id='closePage'></div>
+    <div onClick={closeMenu} style={closePage} className='closePage'></div>
     </>
   )
 }

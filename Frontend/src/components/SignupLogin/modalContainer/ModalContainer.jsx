@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { ModalContainerContext } from '../../../context/signupLogin/FormContext'
 import './modalContainer.scss'
 
 function ModalContainer() {
   const [modalContainer , setModalContainer] = useContext(ModalContainerContext)
 
-  // 'bi bi-exclamation-circle-fill'
-  // The information entered is incorrect
+
   return (
     <>
     <div style={{display: modalContainer.display}} id='modalContainer'>

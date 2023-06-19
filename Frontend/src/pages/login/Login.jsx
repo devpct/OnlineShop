@@ -4,8 +4,7 @@ import ModalContainer from '../../components/SignupLogin/modalContainer/ModalCon
 import SlideControls from '../../components/SignupLogin/slideControls/SlideControls'
 import TitleText from '../../components/SignupLogin/titleText/TitleText'
 import Inputs from '../../components/SignupLogin/inputs/Inputs'
-import { WrapperContext } from '../../context/signupLogin/FormContext'
-import { LoginFormContext } from '../../context/signupLogin/FormContext'
+import { WrapperContext , LoginFormContext } from '../../context/signupLogin/FormContext'
 import Get from '../../hooks/customer/get'
 import './login.scss'
 

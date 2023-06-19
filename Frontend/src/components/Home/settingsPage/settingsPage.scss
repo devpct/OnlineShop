@@ -1,0 +1,69 @@
+$color-main: rgb(35, 35, 35);
+
+.settings{
+    display: none;
+    overflow: hidden;
+    background: #fff;
+    margin: 1.5rem 0;
+    margin-left: 8.7rem;
+    margin-right: 1rem;
+    max-width: 85rem;
+    height: 79vh;
+    box-shadow: 0 0 40px rgba(0,0,0,0.03);
+    border-radius: 10px;
+    color: $color-main;
+    padding: 1rem;
+    font-family: 'Roboto',sans-serif;
+    padding: 1rem;
+    h1{
+      margin-bottom: 2.5rem;
+    }
+    h2{
+      margin-left: 1rem;
+    }
+    .box-color-theme{
+      margin-top: 1rem;
+      max-width: 23rem;
+      background-color: #fff;
+      overflow: hidden;
+      border-radius: 2.5rem;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    
+    .btn-theme{
+      width: 100%;
+      height: 3.5rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: center ;
+    }
+    
+    .btn-theme button{
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 0.6rem;
+      border: 0;
+      cursor: pointer;
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+    
+    .color-blue{
+      background-color: rgb(53, 150, 254);
+    }
+    
+    .color-red{
+      background-color: rgb(255, 5, 138);
+    }
+    
+    .color-green{
+      background-color: rgb(26, 172, 38);
+    }
+    
+    .color-gold{
+      background-color: rgb(252, 185, 0);
+    }
+    
+    .color-yellow{
+      background-color: rgb(192, 189, 37);
+    }
+}

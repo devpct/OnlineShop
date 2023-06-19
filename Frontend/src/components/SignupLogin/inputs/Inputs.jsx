@@ -1,8 +1,6 @@
 import React ,{ useState , useRef , useEffect , useContext} from 'react'
 import PasswordInput from '../passwordInput/PasswordInput'
-import { ModalContainerContext } from '../../../context/signupLogin/FormContext'
-import { ValueNullBetContext } from '../../../context/signupLogin/FormContext'
-import { AlertunameContext } from '../../../context/signupLogin/FormContext'
+import { ModalContainerContext , ValueNullBetContext , AlertunameContext } from '../../../context/signupLogin/FormContext'
 import './inputs.scss'
 
 function Inputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], maxLengths = [], minLengths = [], labels = [], idLabels = [], lPassBet = false , setinputsValueSignup , userNameSignup = false , setinputsValueLogin}) {

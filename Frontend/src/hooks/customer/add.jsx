@@ -31,7 +31,7 @@ function Add({ inputsValueSignup , clickBetSignup , isRunning , setIsRunning , i
         'registrationTime': registrationTime,
       }
 
-      fetch('http://127.0.0.1:8000/signup', {
+      fetch('http://127.0.0.1:8000/add/customer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

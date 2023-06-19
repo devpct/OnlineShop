@@ -1,25 +1,47 @@
-import React from 'react'
+import React,{ useContext , useRef , useEffect } from 'react'
+import { MenuBurgerContext, ClosePageContext, QtyMenuBurgerContext, MenuIconChangeContext } from '../../../context/home/HomeContext'
 import './navbarTop.scss'
 
 function NavbarTop() {
-  let $ = document
   
-  const menuIcon = $.getElementById('nav-icon1')
+  const [menuBurger, setMenuBurger] = useContext(MenuBurgerContext)
+  const [closePage, setClosePage] = useContext(ClosePageContext)
+  const [qtyMenuBurger, setQtyMenuBurger] = useContext(QtyMenuBurgerContext)
+  const [menuIconChange, setMenuIconChange] = useContext(MenuIconChangeContext)
 
-  let i = 0
-  // menuIcon.addEventListener('click',()=>{
-  //   if (i%2==0) {
-  //     menuIcon.classList.add('open')
-  //     menuBurger.style.display = 'block'
-  //     menuBurger.style.left = '0'
-  //     closePage.style.display = 'block'
-  //   }else{
-  //     menuIcon.classList.remove('open')
-  //     menuBurger.style.left = '-20rem'
-  //     closePage.style.display = 'none'
-  //   }
-  //   i++
-  // }) 
+  const menuIcon = useRef()
+
+  useEffect(() => {
+    if (menuIconChange) {
+      menuIcon.current.classList.add('open')
+      setMenuIconChange(false)
+    } else {
+      menuIcon.current.classList.remove('open')
+    }
+  }, [menuIconChange, setMenuIconChange])
+
+  const navBurger = () => {
+    if (qtyMenuBurger % 2 === 0) {
+      menuIcon.current.classList.add('open')
+      setMenuBurger({
+        display: 'block',
+        left: '0'
+      })
+      setClosePage({
+        display: 'block'
+      })
+    } else {
+      menuIcon.current.classList.remove('open')
+      setMenuBurger({
+        left: '-20rem'
+      })
+      setClosePage({
+        display: 'none'
+      })
+    }
+    setQtyMenuBurger(prevI => prevI + 1)
+  }
+
 
   return (
     <>
@@ -33,7 +55,7 @@ function NavbarTop() {
             <img src='../../../public/images/home/iconUser.png'/>
             <p>{localStorage.getItem('username')}</p>
         </div>
-        <div className='nav-icon'>
+        <div ref={menuIcon} onClick={navBurger} className='nav-icon'>
           <span></span>
           <span></span>
           <span></span>

@@ -1,4 +1,4 @@
-import React ,{useRef , useState , useEffect} from 'react'
+import React ,{useRef , useState } from 'react'
 import './passwordInput.scss'
 
 function PasswordInput({ lPassBet , setinputsValueSignup , setinputsValueLogin , value , Change}) {

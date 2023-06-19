@@ -1,0 +1,34 @@
+$color-main: rgb(35, 35, 35);
+
+.cart{
+    display: none;
+    overflow: hidden;
+    background: #fff;
+    margin: 1.5rem 0;
+    margin-left: 8.7rem;
+    margin-right: 1rem;
+    max-width: 85rem;
+    box-shadow: 0 0 40px rgba(0,0,0,0.03);
+    border-radius: 10px;
+    color: $color-main;
+    padding: 1rem;
+    font-family: 'Roboto',sans-serif;
+    position: relative;
+    h1{
+      margin-left: 1rem;
+      margin-top: 1rem;
+    }
+    #emptyBasket{
+      display: none;
+      position: absolute;
+      left: 35%;
+      top: 30%;
+      color: rgba(68, 68, 68, 0.655);
+      text-align: center;
+      i{
+        color: var(--theme-color);
+        display: block;
+        font-size: 8rem;
+      }
+    }
+  }
