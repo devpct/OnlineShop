@@ -283,3 +283,10 @@ $color-main: rgb(35, 35, 35);
   cursor: pointer;
   appearance: none;
 }
+
+.swiper-pagination-bullet{
+  background: #fff;
+}
+.swiper-pagination-bullet-active{
+  background: var(--theme-color);
+}

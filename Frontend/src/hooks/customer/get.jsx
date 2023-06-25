@@ -1,8 +1,7 @@
 import React, { useEffect, useState , useContext} from 'react'
 import { useNavigate} from 'react-router-dom'
-import { AlertunameContext } from '../../context/signupLogin/FormContext'
-import { ModalContainerContext } from '../../context/signupLogin/FormContext'
-import { ValueNullBetContext } from '../../context/signupLogin/FormContext'
+import { AlertunameContext , ModalContainerContext ,ValueNullBetContext } from '../../context/signupLogin/FormContext'
+import { CustomerDataContext , UsernameContext } from '../../context/home/HomeContext'
 
 
 function Get({inputsValueSignup , clickBetLogin , inputsValueLogin , setclickBetLogin}) {
@@ -10,6 +9,9 @@ function Get({inputsValueSignup , clickBetLogin , inputsValueLogin , setclickBet
   const [alertuname, setAlertuname] = useContext(AlertunameContext)
   const [modalContainer , setModalContainer] = useContext(ModalContainerContext)
   const [valueNullBet, setValueNullBet] = useContext(ValueNullBetContext)
+  const [customerData, setCustomerData] = useContext(CustomerDataContext)
+  const [username, setUsername] = useContext(UsernameContext)
+
   const LoginUser = useNavigate()
 
   useEffect(() => {
@@ -26,7 +28,7 @@ function Get({inputsValueSignup , clickBetLogin , inputsValueLogin , setclickBet
       setCustomers(response.data)
     })
     .catch(error => {
-      console.log(error);
+      console.log(error)
     })
   }, [])
 
@@ -34,22 +36,38 @@ function Get({inputsValueSignup , clickBetLogin , inputsValueLogin , setclickBet
 // usename signup
 useEffect(() => {
   let found = false
+  let user = localStorage.getItem('username')
   customers.forEach(customer => {
     if (inputsValueSignup && inputsValueSignup.username) {
-      if (customer.username === inputsValueSignup.username) {
-        setAlertuname({
-          display: 'block'
-        });
-        found = true;
-        return
+      if (user !== undefined) {
+        if (inputsValueSignup.username === user) {
+          found = false
+          return
+        }else{
+          if (customer.username === inputsValueSignup.username) {
+            setAlertuname({
+              display: 'block'
+            })
+            found = true
+            return
+          }
+        }
+      }else{
+        if (customer.username === inputsValueSignup.username) {
+          setAlertuname({
+            display: 'block'
+          })
+          found = true
+          return
+        }
       }
     }
-  });
+  })
   
   if (!found) {
     setAlertuname({
       display: 'none'
-    });
+    })
   }
 }, [inputsValueSignup])
 
@@ -70,7 +88,7 @@ useEffect(() => {
             color: '#fff'
           })
 
-          localStorage.setItem('username', inputsValueLogin.username);
+          localStorage.setItem('username', inputsValueLogin.username)
 
           setTimeout(()=>{
             setModalContainer({display: 'none'})
@@ -80,7 +98,7 @@ useEffect(() => {
           return
         }
       }
-    });
+    })
     
     if (!found) {
       setclickBetLogin(false)
@@ -97,5 +115,37 @@ useEffect(() => {
     }
     }
   }, [clickBetLogin])
-}
+
+
+
+  
+  const [betUserData, setBetUserData] = useState(false)
+  //user data
+  useEffect(() => {
+    if (!betUserData) {
+      let user = localStorage.getItem('username')
+      customers.forEach(customer => {
+        if (customer.username === user) {
+          setCustomerData({
+            id: customer.id,
+            nameLastname: customer.nameLastname,
+            username: customer.username,
+            password: customer.password,
+            email: customer.email,
+            phoneNumber: customer.phoneNumber,
+            city: customer.city,
+            address: customer.address,
+            nationalCode: customer.nationalCode,
+            registrationTime: customer.registrationTime,
+          })
+          setUsername({username : customer.nameLastname})
+          if (customerData) {
+            setBetUserData(true)
+          }
+        }
+      })
+    }
+  })
+  
+  }
 export default Get

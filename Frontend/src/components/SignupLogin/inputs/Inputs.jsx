@@ -14,6 +14,81 @@ function Inputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], m
   const [alertuname, setAlertuname] = useContext(AlertunameContext)
 
   useEffect(()=>{
+    if (value !== undefined) {
+      setInputLabels(Array(inputsCount).fill({ top: '0%' }))
+      for (let i = 0; i < 2; i++) {
+      if (labels[i] === 'Name and Last Name') {
+        setinputsValueSignup((previnputsValueSignup) => {
+          return {
+            ...previnputsValueSignup,
+            nameLastname: value[i]
+          }
+        })
+      }
+      if (userNameSignup) {
+        setinputsValueSignup((previnputsValueSignup) => {
+          return {
+            ...previnputsValueSignup,
+            username: value[i]
+          }
+        })
+      }
+      if (labels[i] === 'Password') {
+        setinputsValueSignup((previnputsValueSignup) => {
+          return {
+            ...previnputsValueSignup,
+            password: value[i]
+          }
+        })
+      }
+      if (labels[i] === 'Email') {
+        setinputsValueSignup((previnputsValueSignup) => {
+          return {
+            ...previnputsValueSignup,
+            email: value[i]
+          }
+        })
+      }
+      if (labels[i] === 'Phone Number') {
+        setinputsValueSignup((previnputsValueSignup) => {
+          return {
+            ...previnputsValueSignup,
+            phoneNumber: value[i]
+          }
+        })
+      }
+      if (labels[i] === 'City') {
+        setinputsValueSignup((previnputsValueSignup) => {
+          return {
+            ...previnputsValueSignup,
+            city: value[i]
+          }
+        })
+      }
+      if (labels[i] === 'Address') {
+        setinputsValueSignup((previnputsValueSignup) => {
+          return {
+            ...previnputsValueSignup,
+            address: value[i]
+          }
+        })
+      }
+      if (labels[i] === 'National Code') {
+        setinputsValueSignup((previnputsValueSignup) => {
+          return {
+            ...previnputsValueSignup,
+            nationalCode: value[i]
+          }
+        })
+      }
+      if (i === 2) {
+        i = 0
+      }
+    }
+    }
+  },[])
+
+  useEffect(()=>{
     if (valueNullBet) {
       setValues('')
       setInputLabels(Array(inputsCount).fill({ top: '50%' }))
@@ -118,13 +193,19 @@ function Inputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], m
     const char = event.key
     const isCharacterValid = /[a-z0-9_]/.test(char)
     
+    let backgroundColor = localStorage.getItem('Theme')
+
+    if (backgroundColor === null) {
+      backgroundColor = '#fad02c'
+    }
+
     if (!isCharacterValid) {
       event.preventDefault()
       setModalContainer({
       display: 'block' ,
       description: 'Username must be in English lowercase letters',
       icon: 'bi bi-info-circle-fill',
-      backgroundColor: '#fad02c',
+      backgroundColor: backgroundColor,
       color: '#000'
      })
       setTimeout(()=>{

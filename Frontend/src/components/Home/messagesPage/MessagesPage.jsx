@@ -1,11 +1,14 @@
-import React from 'react'
+import React,{ useContext }from 'react'
+import { MessagesPageContext } from '../../../context/home/HomeContext'
 import './messagesPage.scss'
 
 function MessagesPage() {
 
+  const [messagesPage, setMessagesPage] = useContext(MessagesPageContext)
+
   return (
     <>
-      <div id="messagesPage" className="messages">    
+      <div style={messagesPage} className="messages">    
         <div className="msg-bubble">
             <div className="msg-info">
                 <div className="msg-info-name">Online Shop</div>

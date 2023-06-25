@@ -1,11 +1,14 @@
-import React from 'react'
+import React,{ useContext }from 'react'
+import { CartPageContext } from '../../../context/home/HomeContext'
 import './cartPage.scss'
 
 function CartPage() {
 
+  const [cartPage, setCartPage] = useContext(CartPageContext)
+
   return (
     <>
-      <div id="cartPage" className="cart">
+      <div style={cartPage} className="cart">
         <h1>Cart</h1>
         <div className="box-product">
            <div className="con-cards-0 con-cards">

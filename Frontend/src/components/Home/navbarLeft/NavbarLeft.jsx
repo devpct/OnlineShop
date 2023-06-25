@@ -1,115 +1,143 @@
-import React,{ useState }from 'react'
+import React,{ useContext , useState }from 'react'
+import { useNavigate} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome , faGear} from '@fortawesome/free-solid-svg-icons'
+import { HomePageContext , CartPageContext , ProfilePageContext , MessagesPageContext , SettingsPageContext } from '../../../context/home/HomeContext'
 import './navbarLeft.scss'
 
 function NavbarLeft() {
 
-  const [home, setHome] = useState()
-  // let $ = document
+  const [homePage, setHomePage] = useContext(HomePageContext)
+  const [cartPage, setCartPage] = useContext(CartPageContext)
+  const [profilePage, setProfilePage] = useContext(ProfilePageContext)
+  const [messagesPage, setMessagesPage] = useContext(MessagesPageContext)
+  const [settingsPage, setSettingsPage] = useContext(SettingsPageContext)
+  const [homeIcon, setHomeIcon] = useState({color:'var(--theme-color)'})
+  const [cartIcon, setCartIcon] = useState({color:'rgba(35, 35, 35, 0.685)'})
+  const [profileIcon, setProfileIcon] = useState({color:'rgba(35, 35, 35, 0.685)'})
+  const [messagesIcon, setMessagesIcon] = useState({color:'rgba(35, 35, 35, 0.685)'})
+  const [settingsIcon, setSettingsIcon] = useState({color:'rgba(35, 35, 35, 0.685)'})
 
-  // const linavbarLeft = $.querySelectorAll('.navbar__item')
-  // const navbarLeft = $.querySelectorAll('.navbar__item a i')
-  // const textNavbarLeft = $.querySelectorAll('.navbar__item a span')
+  const exit = useNavigate()
 
-
-  // for (let i = 0; i < linavbarLeft.length; i++) {
-  //   linavbarLeft[i].addEventListener('click',()=>{
-  //     navbarLeft[i].style.color = localStorage.getItem('Theme')
-  //     textNavbarLeft[i].style.color = localStorage.getItem('Theme')
-  //     for (let j = 0; j < linavbarLeft.length; j++) {
-  //       if (j != i) {
-  //         navbarLeft[j].style.color = 'rgba(35, 35, 35, 0.685)'
-  //       textNavbarLeft[j].style.color = 'rgba(35, 35, 35, 0.685)'
-  //       }   
-  //     }
-  //   })
-  // }
 
   const homeNavbar = ()=>{
-    setHome({
-      display: 'block'
-    })
+    document.title = 'Home | Online Shop'
+    setHomePage({display: 'block'})
+    setHomeIcon({color: 'var(--theme-color)'})
+    setCartPage({display: 'none'})
+    setCartIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setProfilePage({display: 'none'})
+    setProfileIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setMessagesPage({display: 'none'})
+    setMessagesIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setSettingsPage({display: 'none'})
+    setSettingsIcon({color: 'rgba(35, 35, 35, 0.685)'})
   }
-  // Home.addEventListener('click',()=>{
-  //   homePage.style.display = 'block'
-  //   cartPage.style.display = 'none'
-  //   profilePage.style.display = 'none'
-  //   messagesPage.style.display = 'none'
-  //   settingsPage.style.display = 'none'
-  // })
-  
-  // cart.addEventListener('click',()=>{
-  //   homePage.style.display = 'none'
-  //   cartPage.style.display = 'block'
-  //   profilePage.style.display = 'none'
-  //   messagesPage.style.display = 'none'
-  //   settingsPage.style.display = 'none'
-  // })
-  
-  // profile.addEventListener('click',()=>{
-  //   homePage.style.display = 'none'
-  //   cartPage.style.display = 'none'
-  //   profilePage.style.display = 'block'
-  //   messagesPage.style.display = 'none'
-  //   settingsPage.style.display = 'none'
-  // })  
-  
-  // messages.addEventListener('click',()=>{
-  //   homePage.style.display = 'none'
-  //   cartPage.style.display = 'none'
-  //   profilePage.style.display = 'none'
-  //   messagesPage.style.display = 'block'
-  //   settingsPage.style.display = 'none'
-  // })
-  
-  // settings.addEventListener('click',()=>{
-  //   homePage.style.display = 'none'
-  //   cartPage.style.display = 'none'
-  //   profilePage.style.display = 'none'
-  //   messagesPage.style.display = 'none'
-  //   settingsPage.style.display = 'block'
-  // })
 
-  // exit.addEventListener('click',()=>{
-  //   localStorage.clear()
-  //   window.location.href = '../../onlineShop.html';
-  // })
+  const cartNavbar = ()=>{
+    document.title = 'Cart | Online Shop'
+    setHomePage({display: 'none'})
+    setHomeIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setCartPage({display: 'block'})
+    setCartIcon({color: 'var(--theme-color)'})
+    setProfilePage({display: 'none'})
+    setProfileIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setMessagesPage({display: 'none'})
+    setMessagesIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setSettingsPage({display: 'none'})
+    setSettingsIcon({color: 'rgba(35, 35, 35, 0.685)'})
+
+  }
+
+  const profileNavbar = ()=>{
+    document.title = 'Profile | Online Shop'
+    setHomePage({display: 'none'})
+    setHomeIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setCartPage({display: 'none'})
+    setCartIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setProfilePage({display: 'block'})
+    setProfileIcon({color: 'var(--theme-color)'})
+    setMessagesPage({display: 'none'})
+    setMessagesIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setSettingsPage({display: 'none'})
+    setSettingsIcon({color: 'rgba(35, 35, 35, 0.685)'})
+  }
+
+  const messagesNavbar = ()=>{
+    document.title = 'Messages | Online Shop'
+    setHomePage({display: 'none'})
+    setHomeIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setCartPage({display: 'none'})
+    setCartIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setProfilePage({display: 'none'})
+    setProfileIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setMessagesPage({display: 'block'})
+    setMessagesIcon({color: 'var(--theme-color)'})
+    setSettingsPage({display: 'none'})
+    setSettingsIcon({color: 'rgba(35, 35, 35, 0.685)'})
+  }
+
+  const settingsNavbar = ()=>{
+    document.title = 'Settings | Online Shop'
+    setHomePage({display: 'none'})
+    setHomeIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setCartPage({display: 'none'})
+    setCartIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setProfilePage({display: 'none'})
+    setProfileIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setMessagesPage({display: 'none'})
+    setMessagesIcon({color: 'rgba(35, 35, 35, 0.685)'})
+    setSettingsPage({display: 'block'})
+    setSettingsIcon({color: 'var(--theme-color)'})
+  }
+
+  const exitNavbar = ()=>{
+    localStorage.clear()
+    exit('/login')
+  }
+
   return (
     <>
     <nav className='navbar'>
         <ul className='navbar__menu'>
-          <li onClick={homeNavbar} style={home} className='navbar__item'>
-            <a className='navbar__link'>
+          <li onClick={homeNavbar} className='navbar__item'>
+            <a style={homeIcon} className='navbar__link'>
             <i><FontAwesomeIcon icon={faHome} /></i>
-            <span>Home</span></a>
+            <span>Home</span>
+            </a>
           </li>
-          <li  className='navbar__item'>
-            <a className='navbar__link'>
+          <li onClick={cartNavbar}  className='navbar__item'>
+            <a style={cartIcon} className='navbar__link'>
             <div className='shopping-cart' data-product-count='0'>
               <i className='bi bi-bag-fill'></i>
             </div>
-            <span>Cart</span></a>        
+            <span>Cart</span>
+            </a>        
           </li>
-          <li  className='navbar__item'>
-            <a className='navbar__link'>
+          <li onClick={profileNavbar} className='navbar__item'>
+            <a style={profileIcon} className='navbar__link'>
             <i className='bi bi-person-circle'></i>
-            <span>Profile</span></a>        
+            <span>Profile</span>
+            </a>        
           </li>
-          <li  className='navbar__item'>
-            <a className='navbar__link'>
+          <li onClick={messagesNavbar} className='navbar__item'>
+            <a style={messagesIcon} className='navbar__link'>
             <i className='bi bi-chat-left-dots-fill'></i>
-            <span>Messages</span></a>        
+            <span>Messages</span>
+            </a>        
           </li>
-          <li  className='navbar__item'>
+          <li style={settingsIcon} onClick={settingsNavbar} className='navbar__item'>
             <a className='navbar__link'>
             <i><FontAwesomeIcon icon={faGear} /></i>
-            <span>Settings</span></a>          
+            <span>Settings</span>
+            </a>          
           </li>
-          <li  className='navbar__item'>
+          <li onClick={exitNavbar} className='navbar__item'>
             <a className='navbar__link'>
             <i className='bi bi-box-arrow-left'></i>
-            <span>Exit</span></a>          
+            <span>Exit</span>
+            </a>          
           </li>
         </ul>
       </nav>

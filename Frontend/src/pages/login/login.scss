@@ -12,6 +12,10 @@ body {
 	margin: center;
 }
 
+:root {
+	--theme-color: rgb(252, 185, 0);
+}
+
 .container {
 	display: grid;
 	max-width: 80rem;

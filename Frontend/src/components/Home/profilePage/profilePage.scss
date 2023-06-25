@@ -1,14 +1,18 @@
 $color-main: rgb(35, 35, 35);
+$button-color: rgb(35, 35, 35);
+
+:root {
+  --theme-color: rgb(252, 185, 0);
+}
 
 .profile{
-    display: none;
     overflow: hidden;
     background: #fff;
     margin: 1.5rem 0;
     margin-left: 8.7rem;
     margin-right: 1rem;
     max-width: 85rem;
-    height: 79vh;
+    min-height: 80vh;
     box-shadow: 0 0 40px rgba(0,0,0,0.03);
     border-radius: 10px;
     color: $color-main;
@@ -18,4 +22,106 @@ $color-main: rgb(35, 35, 35);
       margin-left: 1rem;
       margin-top: 1rem;
     }
+  .registration-time{
+    width: fit-content;
+    padding: 0.1rem 0.5rem;
+    color: $color-main;
+    background-color: var(--theme-color);
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 2rem;
+  }
+.edit-signup{
+  max-width: 34rem;
+  margin: auto;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  .field{
+    i:hover{
+      color: var(--theme-color);
+    }
+    input{
+      width: 100%;
+    }
+    .Ne{
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      color: #999999;
+      font-size: 17px;
+      transform: translateY(-50%);
+      z-index: 5;
+  }
+  #phoneNum{
+    padding-left: 3rem;
+  }
+  #lphoneNum {
+    top: 2%;
+    font-size: 14px;
+    background-color: #fff;
+  }
+  }
+  .tow-box{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5%;
+    .field{
+      width: 100%;
+    }
+  }
+}
+
+  textarea{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  resize: none;
+  color: $button-color;
+  outline: none;
+  border: 1px solid lightgrey;
+  border-radius: 18px;
+  transition: all 0.3s ease;
+  &:focus {
+      border-color: var(--theme-color);
+  }
+&::selection{
+background: var(--theme-color);
+color: $button-color;
+}
+&:valid {
+~ {
+  label {
+      top: 55%;
+      font-size: 14px;
+      color: #999999;
+      background: #fff;
+      transform: translateY(-50%);
+  }
+}
+}
+&:focus {
+~ {
+  label {
+    top: -5%;
+    font-size: 14px;
+    color: var(--theme-color);
+    background: #Fff;
+      transform: translateY(-50%);
+  }
+}
+}
+}
+}
+
+
+@media only screen and (max-width: 725px) {
+  .edit-signup{
+    .tow-box{
+      flex-wrap: wrap;
+      justify-content: center;
+      input{
+        width: 100%;
+      }
+    }
+  }
 }

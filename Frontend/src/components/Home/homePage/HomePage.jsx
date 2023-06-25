@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination, Navigation } from "swiper"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { HomePageContext } from '../../../context/home/HomeContext'
 import "swiper/css"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
@@ -11,6 +12,8 @@ import './homePage.scss'
 
 function HomePage() {
     
+  const [homePage, setHomePage] = useContext(HomePageContext)
+
 const SEGMENTED_CONTROL_BASE_SELECTOR = ".ios13-segmented-control";
 const SEGMENTED_CONTROL_INDIVIDUAL_SEGMENT_SELECTOR =
     ".ios13-segmented-control .option input";
@@ -126,7 +129,7 @@ function forEachElement(className, fn) {
 
  return (
     <>
-    <div className='content'>
+    <div style={homePage} className='content'>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

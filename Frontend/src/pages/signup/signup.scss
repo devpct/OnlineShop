@@ -1,9 +1,6 @@
-$theme:rgb(252, 185, 0);
 
 :root {
-	--hue: 223;
-	--bg2: hsl(var(--hue),10%,80%);
-  
+	--theme-color: rgb(252, 185, 0);
 }
 
 .wrapper {
@@ -36,7 +33,7 @@ $theme:rgb(252, 185, 0);
 	transform: translateY(0.1em);
   }
   .btn__text {
-	background-image: $theme;
+	background-image: var(--theme-color);
 	border-radius: inherit;
 	color: rgb(35, 35, 35);
 	display: inline-block;
@@ -48,7 +45,7 @@ $theme:rgb(252, 185, 0);
   }
   .btn:not(:disabled):focus .btn__text,
   .btn:not(:disabled):hover .btn__text {
-	background-color: $theme;
+	background-color: var(--theme-color);
   }
   .btn__progress {
 	overflow: visible;
@@ -65,7 +62,7 @@ $theme:rgb(252, 185, 0);
 	stroke-width: 24;
   }
   .btn__progress-fill {
-	stroke: $theme;
+	stroke: var(--theme-color);
 	stroke-dashoffset: 125.66;
   }
   .btn__progress-check {
@@ -97,7 +94,7 @@ $theme:rgb(252, 185, 0);
   
   /* Running state */
   .btn--running .btn__text {
-	background-color: $theme;
+	background-color: var(--theme-color);
 	visibility: hidden;
   }
   .btn--running .btn__progress {
@@ -117,7 +114,7 @@ $theme:rgb(252, 185, 0);
   
   /* Done state */
   .btn--done .btn__progress-track {
-	stroke: $theme;
+	stroke: var(--theme-color);
 	transition:
 	  r 0.3s ease-in-out,
 	  stroke-width 0.3s ease-in-out;

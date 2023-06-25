@@ -1,11 +1,10 @@
 $button-color: rgb(35, 35, 35);
-$theme:rgb(252, 185, 0);
 
 .title-text {
     padding: 2rem;
     display: flex;
     width: 180%;
-    background: $theme;
+    background: var(--theme-color);
     .title {
         user-select: none;
         width: 50%;

@@ -23,14 +23,6 @@ $transition: $timing ease all;
         margin-right: 0.5rem;
       }
     }
-    li:first-child{
-      i{
-        color: var(--theme-color);
-      }  
-      span{
-        color: var(--theme-color);
-      }
-    }
     position: fixed;
     top: 1rem;
     left: 1rem;
@@ -45,14 +37,12 @@ $transition: $timing ease all;
       align-items: center;
       justify-content: center;
       width: 1rem * 5.5;
-      color: rgba(35, 35, 35, 0.685);
       transition: $transition;
       font-size: 0.7rem;
       span{
         position: absolute;
         top: 2rem;
         pointer-events: none;
-        color: rgba(35, 35, 35, 0.685);
         padding: 0.2rem 0.4rem;
         transition: $transition;
         border-radius: 0.5rem;

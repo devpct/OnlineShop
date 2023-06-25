@@ -11,7 +11,6 @@
     outline: none;
 }
 
-// $theme:rgb(252, 185, 0);
 $color-main: rgb(35, 35, 35);
 $timing: 0.2s;
 $transition: $timing ease all;
@@ -34,11 +33,7 @@ body{
   padding: 0 1rem;
 }
 
-.content , .cart , .profile , .settings , .messages{
-  max-width: 100%;
-  margin-left: 0.8rem;
-  margin-right: 0.8rem;
-}
+
 
 /* Project Responsive */
 
@@ -50,9 +45,7 @@ body{
 }
 
 @media only screen and (max-width: 1510px) {
-  .navbar-top , .content , .cart , .profile , .settings ,.messages{
-    margin-left: 7.7rem;
-  }
+
 }
 
 

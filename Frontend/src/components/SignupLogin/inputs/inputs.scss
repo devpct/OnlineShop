@@ -1,5 +1,8 @@
 $button-color: rgb(35, 35, 35);
-$theme:rgb(252, 185, 0);
+
+:root {
+    --theme-color: rgb(252, 185, 0);
+}
 
 .field {
     height: 50px;
@@ -17,10 +20,10 @@ $theme:rgb(252, 185, 0);
         transition: all 0.3s ease;
         padding: 0 0.8rem;
         &:focus {
-            border-color: rgb(252, 185, 0);
+            border-color: var(--theme-color);
         }
 &::selection{
-  background: $theme;
+  background: var(--theme-color);
   color: $button-color;
 }
     }
@@ -31,7 +34,7 @@ font-weight: 500;
 padding-left: 0px;
 border: none;
 cursor: pointer;
-background: $theme;
+background: var(--theme-color);
 font-weight: bold;
 }
     label {
@@ -65,7 +68,7 @@ font-weight: bold;
                 label {
                     top: 0%;
                     font-size: 14px;
-                    color: rgb(211, 157, 9);
+                    color: var(--theme-color);
                     background: #fff;
                     transform: translateY(-50%);
                 }
@@ -120,10 +123,10 @@ font-weight: bold;
             border-radius: 18px;
             transition: all 0.3s ease;
             &:focus {
-                border-color: rgb(252, 185, 0);
+                border-color: var(--theme-color);
             }
     &::selection{
-      background: $theme;
+      background: var(--theme-color);
       color: $button-color;
     }
     &:valid {
@@ -142,7 +145,7 @@ font-weight: bold;
             label {
                 top: -5%;
                 font-size: 14px;
-                color: rgb(211, 157, 9);
+                color: var(--theme-color);
                 background: #Fff;
                 transform: translateY(-50%);
             }

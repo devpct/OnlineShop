@@ -26,6 +26,7 @@ def dataCustomers(request):
     data = []
     for customer in customersList:
         customerData = {
+            'id': customer.customer_id,
             'nameLastname': customer.name_lastname,
             'username': customer.username,
             'password': customer.password,
@@ -92,19 +93,16 @@ def updateCustomer(request):
     city = data['city']
     address = data['address'] 
     nationalCode = data['nationalCode']
-    registrationTime = data['registrationTime']
 
-
-    customer = Customers.objects.get(id=userId)
+    customer = Customers.objects.get(customer_id=customerId)
     customer.username = username
-    customer.nameLastname = nameLastname
+    customer.name_lastname = nameLastname
     customer.password = password
     customer.email = email
-    customer.phoneNumber = phoneNumber
+    customer.phone_number = phoneNumber
     customer.city = city
     customer.address = address
-    customer.nationalCode = nationalCode
-    customer.registrationTime = registrationTime
+    customer.national_code = nationalCode
     customer.save()
 
     return JsonResponse({'status': 'ok'})
