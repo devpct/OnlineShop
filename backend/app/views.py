@@ -93,7 +93,6 @@ def updateCustomer(request):
     city = data['city']
     address = data['address'] 
     nationalCode = data['nationalCode']
-
     customer = Customers.objects.get(customer_id=customerId)
     customer.username = username
     customer.name_lastname = nameLastname
@@ -150,6 +149,7 @@ def dataProduct(request):
     data = []
     for product in productList:
         productData = {
+            'productId': product.id,
             'productName': product.product_name,
             'description': product.description,
             'price' :product.price,
@@ -224,9 +224,10 @@ def dataCategory(request):
     data = []
     for category in categoryList:
         categoryData = {
-            'category_name': category.category_name,
-            'category_description': category.category_description,
-            'category_image' :category.category_image
+            'categoryId': category.id,
+            'categoryName': category.category_name,
+            'categoryDescription': category.category_description,
+            'categoryImage' :category.category_image
         }
         data.append(categoryData)
 
@@ -288,7 +289,7 @@ def dataCart(request):
     data = []
     for cart in cartList:
         cartData = {
-            'userId': cart.user_id_id,
+            'customerId': cart.customer_id_id,
             'productId': cart.product_id_id,
             'quantity': cart.quantity,
             'status': cart.status
@@ -301,16 +302,16 @@ def dataCart(request):
 @api_view(['POST'])
 def addCart(request):
     data = json.loads(request.body)
-    userId = data['userId']
+    customerId = data['customerId']
     productId = data['productId']
     quantity = data['quantity']
     status = data['status']
 
-    user = Users.objects.get(id=userId)
+    customer = Customers.objects.get(customer_id=customerId)
     product = Products.objects.get(id=productId)
 
     cart = Carts(
-    user_id = user,
+    customer_id = customer,
     product_id = product,
     quantity = quantity,
     status = status

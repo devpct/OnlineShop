@@ -22,6 +22,9 @@ $transition: $timing ease all;
       i{
         margin-right: 0.5rem;
       }
+      &:hover{
+        color: var(--theme-color);
+      }
     }
     position: fixed;
     top: 1rem;
@@ -46,9 +49,6 @@ $transition: $timing ease all;
         padding: 0.2rem 0.4rem;
         transition: $transition;
         border-radius: 0.5rem;
-      }
-      &:hover{
-        color: var(--theme-color);
       }
     }
     .shopping-cart::before {

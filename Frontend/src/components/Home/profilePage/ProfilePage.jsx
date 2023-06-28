@@ -3,7 +3,7 @@ import { ProfilePageContext , CustomerDataContext } from '../../../context/home/
 import Inputs from '../../SignupLogin/inputs/Inputs'
 import ButtonSignup from '../../../../public/svg/ButtonSignup'
 import ModalContainer from '../../SignupLogin/modalContainer/ModalContainer'
-import { SignupFormContext , AlertunameContext} from '../../../context/signupLogin/FormContext'
+import { AlertunameContext } from '../../../context/signupLogin/FormContext'
 import Get from '../../../hooks/customer/get'
 import Update from '../../../hooks/customer/update'
 import './profilePage.scss'
@@ -11,7 +11,7 @@ import './profilePage.scss'
 function ProfilePage() {
 
   const [alertuname, setAlertuname] = useContext(AlertunameContext)
-  const [inputsValueSignup, setinputsValueSignup] = useState()
+  const [inputsValueSignup, setinputsValueSignup] = useState('')
   const [clickBetUpdate , setclickBetUpdate] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
   const [isDone, setIsDone] = useState(false)
@@ -19,18 +19,17 @@ function ProfilePage() {
   const [customerData, setCustomerData] = useContext(CustomerDataContext)
 
   useEffect(()=>{
-    if (customerData !== undefined) {
+    if (customerData.username !== undefined) {
       setinputsValueSignup((previnputsValueSignup) => {
         return {
           ...previnputsValueSignup,
           id: customerData.id
         }
     })
-  }
+    }
   },[customerData])
 
   const updata = (event) => {
-    console.log(inputsValueSignup);
     event.preventDefault()
     if (
       inputsValueSignup.nameLastname !== undefined &&
@@ -52,7 +51,7 @@ function ProfilePage() {
 
   return (
     <>
-      { customerData !== undefined && (
+      { customerData.nameLastname !== '' && (
       <div style={profilePage} className="profile">
         <h1>Profile</h1>
         <form className='edit-signup'>

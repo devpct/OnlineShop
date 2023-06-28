@@ -1,34 +1,26 @@
 import React, { useEffect, useState , useContext} from 'react'
+import axios from 'axios'
 import { useNavigate} from 'react-router-dom'
 import { AlertunameContext , ModalContainerContext ,ValueNullBetContext } from '../../context/signupLogin/FormContext'
-import { CustomerDataContext , UsernameContext } from '../../context/home/HomeContext'
+import { CustomerDataContext } from '../../context/home/HomeContext'
 
 
-function Get({inputsValueSignup , clickBetLogin , inputsValueLogin , setclickBetLogin}) {
+function Get({inputsValueSignup , clickBetLogin , inputsValueLogin , setclickBetLogin , setCustomerId}) {
   const [customers, setCustomers] = useState([])
   const [alertuname, setAlertuname] = useContext(AlertunameContext)
   const [modalContainer , setModalContainer] = useContext(ModalContainerContext)
   const [valueNullBet, setValueNullBet] = useContext(ValueNullBetContext)
   const [customerData, setCustomerData] = useContext(CustomerDataContext)
-  const [username, setUsername] = useContext(UsernameContext)
 
   const LoginUser = useNavigate()
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/data/customers', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
+  axios.get('http://127.0.0.1:8000/data/customers')
     .then(response => {
-      return response.json()
-    })
-    .then(response => {
-      setCustomers(response.data)
-    })
+      setCustomers(response.data.data)
+    })  
     .catch(error => {
-      console.log(error)
+      console.error(error)
     })
   }, [])
 
@@ -138,14 +130,13 @@ useEffect(() => {
             nationalCode: customer.nationalCode,
             registrationTime: customer.registrationTime,
           })
-          setUsername({username : customer.nameLastname})
           if (customerData) {
             setBetUserData(true)
           }
         }
       })
     }
-  })
+  },[customerData,betUserData,customers])
   
   }
 export default Get

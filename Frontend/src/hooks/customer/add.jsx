@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import axios from 'axios'
 import { useNavigate} from 'react-router-dom'
 import { ValueNullBetContext } from '../../context/signupLogin/FormContext'
 import { ModalContainerContext } from '../../context/signupLogin/FormContext'
@@ -19,71 +20,62 @@ function Add({ inputsValueSignup , clickBetSignup , isRunning , setIsRunning , i
       const currentdate = new Date()
       const registrationTime = `${currentdate.getFullYear()}/${currentdate.getDate()}/${currentdate.getMonth()+ 1}  |  ${currentdate.getHours()}:${currentdate.getMinutes()}:${currentdate.getSeconds()}`
 
-      let formData = {
-        'username': inputsValueSignup.username,
-        'nameLastname': inputsValueSignup.nameLastname,
-        'password': inputsValueSignup.password,
-        'email': inputsValueSignup.email,
-        'phoneNumber': '0'+inputsValueSignup.phoneNumber,
-        'city': inputsValueSignup.city,
-        'address': inputsValueSignup.address,
-        'nationalCode': inputsValueSignup.nationalCode,
-        'registrationTime': registrationTime,
-      }
-
-      fetch('http://127.0.0.1:8000/add/customer', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-        .then((response) => {
-          console.log(response)
-          if (response.status === 200) {
-            if (isRunning || isDone) return
+  axios.post('http://127.0.0.1:8000/add/customer', { 
+    username: inputsValueSignup.username,
+    nameLastname: inputsValueSignup.nameLastname,
+    password: inputsValueSignup.password,
+    email: inputsValueSignup.email,
+    phoneNumber: '0'+inputsValueSignup.phoneNumber,
+    city: inputsValueSignup.city,
+    address: inputsValueSignup.address,
+    nationalCode: inputsValueSignup.nationalCode,
+    registrationTime: registrationTime,
+   })
+    .then(response => {
+      if (response.status === 200) {
+        if (isRunning || isDone) return
+    
+        setIsRunning(true)
         
-            setIsRunning(true)
-            
-            setTimeout(() => {
-              setIsRunning(false)
-              setIsDone(true)
-              
-            setTimeout(() => {
-              setIsDone(false)
-            }, resetDuration)
-          }, 600 + submitDuration)
-            setValueNullBet(true)
-            setTimeout(()=>{
-            setModalContainer({
-              display: 'block' ,
-              description: 'Registration was successful',
-              icon: 'bi bi-check-circle-fill',
-              backgroundColor: 'rgb(84, 169, 84)',
-              color: '#fff'
-            })
-            },2300)
-            setTimeout(()=>{
-              setModalContainer({display: 'none'})
-              setSignupFormBet(false)
-              signupUser('/login')
-            },5000)
-          } else {
-              setModalContainer({
-                display: 'block' ,
-                description: 'Server problem, please try again',
-                icon: 'bi bi-exclamation-triangle-fill',
-                backgroundColor: 'rgb(232, 44, 44)',
-                color: '#fff'
-              })
-              setTimeout(()=>{
-                setModalContainer({display: 'none'})
-              },5000)
-          }
+        setTimeout(() => {
+          setIsRunning(false)
+          setIsDone(true)
+          
+        setTimeout(() => {
+          setIsDone(false)
+        }, resetDuration)
+      }, 600 + submitDuration)
+        setValueNullBet(true)
+        setTimeout(()=>{
+        setModalContainer({
+          display: 'block' ,
+          description: 'Registration was successful',
+          icon: 'bi bi-check-circle-fill',
+          backgroundColor: 'rgb(84, 169, 84)',
+          color: '#fff'
         })
-        .catch((error) => {
-          console.log(error)
-        })
+        },2300)
+        setTimeout(()=>{
+          setModalContainer({display: 'none'})
+          setSignupFormBet(false)
+          signupUser('/login')
+        },5000)
+      } else {
+          setModalContainer({
+            display: 'block' ,
+            description: 'Server problem, please try again',
+            icon: 'bi bi-exclamation-triangle-fill',
+            backgroundColor: 'rgb(232, 44, 44)',
+            color: '#fff'
+          })
+          setTimeout(()=>{
+            setModalContainer({display: 'none'})
+          },5000)
+      }
+    })
+    .catch(error => {
+      console.error(error)
+    })
 
       }
     }, [clickBetSignup])

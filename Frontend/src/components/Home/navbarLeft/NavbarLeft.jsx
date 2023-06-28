@@ -2,7 +2,8 @@ import React,{ useContext , useState }from 'react'
 import { useNavigate} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome , faGear} from '@fortawesome/free-solid-svg-icons'
-import { HomePageContext , CartPageContext , ProfilePageContext , MessagesPageContext , SettingsPageContext } from '../../../context/home/HomeContext'
+import { HomePageContext , CartPageContext , ProfilePageContext , MessagesPageContext , SettingsPageContext , NumberGoodsContext } from '../../../context/home/HomeContext'
+import Get from '../../../hooks/cart/get'
 import './navbarLeft.scss'
 
 function NavbarLeft() {
@@ -17,9 +18,9 @@ function NavbarLeft() {
   const [profileIcon, setProfileIcon] = useState({color:'rgba(35, 35, 35, 0.685)'})
   const [messagesIcon, setMessagesIcon] = useState({color:'rgba(35, 35, 35, 0.685)'})
   const [settingsIcon, setSettingsIcon] = useState({color:'rgba(35, 35, 35, 0.685)'})
+  const [numberGoods, setNumberGoods] = useContext(NumberGoodsContext)
 
   const exit = useNavigate()
-
 
   const homeNavbar = ()=>{
     document.title = 'Home | Online Shop'
@@ -93,7 +94,8 @@ function NavbarLeft() {
   }
 
   const exitNavbar = ()=>{
-    localStorage.clear()
+    localStorage.removeItem('username');
+    document.documentElement.style.setProperty('--theme-color','rgb(252, 185, 0)')
     exit('/login')
   }
 
@@ -109,7 +111,7 @@ function NavbarLeft() {
           </li>
           <li onClick={cartNavbar}  className='navbar__item'>
             <a style={cartIcon} className='navbar__link'>
-            <div className='shopping-cart' data-product-count='0'>
+            <div className='shopping-cart' data-product-count={numberGoods}>
               <i className='bi bi-bag-fill'></i>
             </div>
             <span>Cart</span>
@@ -141,6 +143,7 @@ function NavbarLeft() {
           </li>
         </ul>
       </nav>
+      <Get/>
     </>
   )
 }

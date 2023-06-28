@@ -1,5 +1,5 @@
 import React,{ useContext , useRef , useEffect , useState} from 'react'
-import { MenuBurgerContext, ClosePageContext, QtyMenuBurgerContext, MenuIconChangeContext , UsernameContext } from '../../../context/home/HomeContext'
+import { MenuBurgerContext, ClosePageContext, QtyMenuBurgerContext, MenuIconChangeContext , CustomerDataContext } from '../../../context/home/HomeContext'
 import './navbarTop.scss'
 
 function NavbarTop() {
@@ -8,7 +8,7 @@ function NavbarTop() {
   const [closePage, setClosePage] = useContext(ClosePageContext)
   const [qtyMenuBurger, setQtyMenuBurger] = useContext(QtyMenuBurgerContext)
   const [menuIconChange, setMenuIconChange] = useContext(MenuIconChangeContext)
-  const [username, setUsername] = useContext(UsernameContext)
+  const [customerData, setCustomerData] = useContext(CustomerDataContext)
 
   const menuIcon = useRef()
 
@@ -54,7 +54,7 @@ function NavbarTop() {
         </div>
         <div className='data-user'>
             <img src='../../../public/images/home/iconUser.png'/>
-            <p>{username.username}</p>
+            <p>{customerData.nameLastname}</p>
         </div>
         <div ref={menuIcon} onClick={navBurger} className='nav-icon'>
           <span></span>

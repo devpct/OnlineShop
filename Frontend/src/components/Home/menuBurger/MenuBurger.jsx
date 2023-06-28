@@ -71,7 +71,8 @@ function MenuBurger() {
   }
 
   const exitNavbar = ()=>{
-    localStorage.clear()
+    localStorage.removeItem('username');
+    document.documentElement.style.setProperty('--theme-color','rgb(252, 185, 0)')
     exit('/login')
   }
 

@@ -14,7 +14,7 @@ function Inputs({ inputsCount, ids = [], value = [], types = ['text', 'text'], m
   const [alertuname, setAlertuname] = useContext(AlertunameContext)
 
   useEffect(()=>{
-    if (value !== undefined) {
+    if (value.length > 0) {
       setInputLabels(Array(inputsCount).fill({ top: '0%' }))
       for (let i = 0; i < 2; i++) {
       if (labels[i] === 'Name and Last Name') {

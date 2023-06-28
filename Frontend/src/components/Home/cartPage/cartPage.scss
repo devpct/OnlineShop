@@ -1,6 +1,7 @@
 $color-main: rgb(35, 35, 35);
 
 .cart{
+    display: grid;
     overflow: hidden;
     background: #fff;
     margin: 1.5rem 0;
@@ -19,9 +20,8 @@ $color-main: rgb(35, 35, 35);
       margin-top: 1rem;
     }
     #emptyBasket{
-      position: absolute;
-      left: 35%;
-      top: 30%;
+      // display: none;
+      margin: 5rem auto;
       color: rgba(68, 68, 68, 0.655);
       text-align: center;
       i{

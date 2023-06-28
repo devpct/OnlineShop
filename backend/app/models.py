@@ -32,12 +32,13 @@ class Products(models.Model):
 class Categorys(models.Model):
     category_name = models.CharField(max_length=255)
     category_description = models.CharField(max_length=255)
-    category_image = models.CharField(max_length=255)
+    category_image = models.TextField()
     def to_dict(self):
         return {
             'id': self.id,
             'category_name': self.category_name,
         }
+
 
 # cart
 class Carts (models.Model) :

@@ -47,7 +47,7 @@ function Signup() {
 
   return (
     <>
-    <img className="mooj" src="../../../public/images/mooj.png" alt="Logo" />
+    <img className="mooj" src="../../../public/images/signupLogin/mooj.png" alt="Logo" />
     <div className="container">
       <div className="wrapper">
         <TitleText />

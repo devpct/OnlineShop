@@ -11,6 +11,10 @@ export const MessagesPageContext = createContext()
 export const SettingsPageContext = createContext()
 export const CustomerDataContext = createContext()
 export const UsernameContext = createContext()
+export const NumberGoodsContext = createContext()
+export const productDataContext = createContext()
+export const CartProductsContext = createContext()
+
 
 
 const HomeProvider = ({ children }) => {
@@ -24,8 +28,10 @@ const HomeProvider = ({ children }) => {
     const [profilePage, setProfilePage] = useState({display: 'none'})
     const [messagesPage, setMessagesPage] = useState({display: 'none'})
     const [settingsPage, setSettingsPage] = useState({display: 'none'})
-    const [customerData, setCustomerData] = useState()
-    const [username, setUsername] = useState({username : ''})
+    const [customerData, setCustomerData] = useState({nameLastname : ''})
+    const [numberGoods, setNumberGoods] = useState(0)
+    const [productData, setProductData] = useState()
+    const [cartProducts, setCartProducts] = useState('')
 
     return(
         <MenuBurgerContext.Provider value={[menuBurger, setMenuBurger]}>
@@ -38,9 +44,13 @@ const HomeProvider = ({ children }) => {
         <MessagesPageContext.Provider value={[messagesPage, setMessagesPage]}>
         <SettingsPageContext.Provider value={[settingsPage, setSettingsPage]}>
         <CustomerDataContext.Provider value={[customerData, setCustomerData]}>
-        <UsernameContext.Provider value={[username,setUsername]}>
+        <NumberGoodsContext.Provider value={[numberGoods, setNumberGoods]}>
+        <productDataContext.Provider value={[productData, setProductData]}>
+        <CartProductsContext.Provider value={[cartProducts, setCartProducts]}>
             {children}
-        </UsernameContext.Provider>
+        </CartProductsContext.Provider>
+        </productDataContext.Provider>
+        </NumberGoodsContext.Provider>
         </CustomerDataContext.Provider>
         </SettingsPageContext.Provider>
         </MessagesPageContext.Provider>
