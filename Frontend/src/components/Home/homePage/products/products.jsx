@@ -5,7 +5,7 @@ import GetProductCart from '../../../../hooks/cart/get'
 import GetProducts from '../../../../hooks/product/get'
 import Add from '../../../../hooks/cart/add'
 
-function products({categoryId , category}) {
+function products({categoryId}) {
 
     const [productData, setProductData] = useState('')
     const [products, setProducts] = useState()
@@ -14,16 +14,6 @@ function products({categoryId , category}) {
     const [numberGoods, setNumberGoods] = useContext(NumberGoodsContext)
     const [quantityMap, setQuantityMap] = useState({})
     const [cartProducts, setCartProducts] = useContext(CartProductsContext)
-
-    useEffect(()=>{
-        if (products !== undefined) {
-            const initialProducts = products.map((product) => ({
-            ...product,
-            valueStatus: 'Add to Cart'
-            }))
-            setProducts(initialProducts)
-        }
-    },[category])
 
     const minusProduct = (productId) => {
         setQuantityMap((prevQuantityMap) => {
@@ -107,7 +97,7 @@ function products({categoryId , category}) {
                         onClick={() => addCart(product.productId)}
                         className='add'
                         >
-                        {product.valueStatus}
+                        {product.valueStatus === undefined ? product.valueStatus = 'Add to Cart' : product.valueStatus}
                       </button>
                     </div>
                   </div>

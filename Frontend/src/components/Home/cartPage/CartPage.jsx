@@ -10,7 +10,6 @@ function CartPage() {
   const [quantityMap, setQuantityMap] = useState({})
 
   useEffect(()=>{
-   console.log(cartProducts)
   },[cartProducts])
 
   const minusProduct = (productId) => {

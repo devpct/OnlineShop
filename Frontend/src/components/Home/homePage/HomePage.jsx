@@ -17,7 +17,6 @@ function HomePage() {
   const [homePage, setHomePage] = useContext(HomePageContext)
   const [titleCategory, setTitleCategory] = useState()
   const [categoryId, setCategoryId] = useState(1)
-  const [category, setCategory] = useState()
 
  return (
     <>
@@ -68,13 +67,11 @@ function HomePage() {
           <Category 
           setCategoryId={setCategoryId} 
           setTitleCategory={setTitleCategory} 
-          category={category} 
-          setCategory={setCategory}
           />    
 
         <div className='box-bottom'>
             <h1>{titleCategory}</h1>
-          <Products categoryId={categoryId} category={category}/>
+          <Products categoryId={categoryId}/>
         </div>
 
       </div>

@@ -2,10 +2,11 @@ import React,{ useState , useEffect } from 'react'
 import './category.scss'
 import Get from '../../../../hooks/category/get'
 
-function category({setTitleCategory , setCategoryId , category , setCategory}) {
+function category({setTitleCategory , setCategoryId}) {
 
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
+  const [category, setCategory] = useState()
 
   useEffect(()=>{
    
