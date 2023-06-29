@@ -7,7 +7,8 @@ function Get({ setProducts }) {
     axios
       .get('http://127.0.0.1:8000/data/products')
       .then(response => {
-        setProducts(response.data.data)
+          const products = response.data.data
+          setProducts(products)
       })
       .catch(error => {
         console.error(error)

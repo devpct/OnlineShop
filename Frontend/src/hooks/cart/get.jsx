@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import axios from 'axios'
 import { CustomerDataContext, NumberGoodsContext } from '../../context/home/HomeContext'
 
-function Get({ setProducts }) {
+function Get({ setProductData }) {
 
   const [numberGoods, setNumberGoods] = useContext(NumberGoodsContext)
   const [customerData, setCustomerData] = useContext(CustomerDataContext)
@@ -12,19 +12,14 @@ function Get({ setProducts }) {
         .then(response => {
           const filteredProducts = response.data.data.filter(
             cart => cart.customerId === customerData.id
-          )
+            )
           const productsCart = filteredProducts.map(cart => ({
             productId: cart.productId,
             quantity: cart.quantity,
             status: cart.status
           }))
+          setProductData(productsCart)
           setNumberGoods(filteredProducts.length)
-          // setProducts((prevProducts) => {
-          //   return {
-          //     ...prevProducts,
-          //     productsCart
-          //   }
-          // })
         })
         .catch(error => {
           console.error(error)

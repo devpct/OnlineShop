@@ -7,13 +7,23 @@ import Add from '../../../../hooks/cart/add'
 
 function products({categoryId}) {
 
-    const [productData, setProductData] = useState('')
+    const [productData, setProductData] = useState()
     const [products, setProducts] = useState()
     const [customerData, setCustomerData] = useContext(CustomerDataContext)
     const [productInformation, setProductInformation] = useState()
     const [numberGoods, setNumberGoods] = useContext(NumberGoodsContext)
     const [quantityMap, setQuantityMap] = useState({})
     const [cartProducts, setCartProducts] = useContext(CartProductsContext)
+
+    useEffect(()=>{
+      if (products !== undefined) {
+          const initialProducts = products.map((product) => ({
+          ...product,
+          valueStatus: 'Add to Cart'
+          }))
+          setProducts(initialProducts)
+      }
+    },[productData])
 
     const minusProduct = (productId) => {
         setQuantityMap((prevQuantityMap) => {
@@ -57,8 +67,8 @@ function products({categoryId}) {
 
   return (
     <>
-        {products !== undefined && (
-            <div className='box-product'>
+        {productData !== undefined && productData.length !== 0 && (
+          <div className='box-product'>
             <div className='con-cards'>
                 {products.map((product) => (
                     <div className='card' 
@@ -106,8 +116,8 @@ function products({categoryId}) {
             </div>
         </div>
     )}
+    <GetProductCart setProductData={setProductData}/>
     <GetProducts setProducts={setProducts}/>
-    <GetProductCart setProducts={setProducts}/>
     <Add productInformation={productInformation}/>
     </>
   )
