@@ -7,8 +7,8 @@ import Add from '../../../../hooks/cart/add'
 
 function products({categoryId}) {
 
-    const [productData, setProductData] = useState()
-    const [products, setProducts] = useState()
+    const [productData, setProductData] = useState([])
+    const [products, setProducts] = useState([])
     const [customerData, setCustomerData] = useContext(CustomerDataContext)
     const [productInformation, setProductInformation] = useState()
     const [numberGoods, setNumberGoods] = useContext(NumberGoodsContext)
@@ -86,7 +86,7 @@ function products({categoryId}) {
                     </div>
                   </div>
                   <div className="con-price">
-                    <span>${(product.price * (quantityMap[product.productId] || 1)).toLocaleString('en-US')}</span>
+                  <span>${(product.price * (productData.some(item => item.productId === product.productId) ? productData.find(item => item.productId === product.productId).quantity : (quantityMap[product.productId] || 1))).toLocaleString('en-US')}</span>
                   </div>
                   <div className="con-conallinputbtns">
                     <div className="con-input-btns">
@@ -94,7 +94,7 @@ function products({categoryId}) {
                       <input 
                       disabled={product.valueStatus !== 'Add to Cart'}
                       type="text" 
-                      value={quantityMap[product.productId] || 1}
+                      value={productData.some(item => item.productId === product.productId) ? productData.find(item => item.productId === product.productId).quantity : (quantityMap[product.productId] || 1)}
                       id={`product-input-${product.productId}`}
                       readOnly
                       />
@@ -102,12 +102,20 @@ function products({categoryId}) {
                     </div>
                     <div className='con-btn'>
                       <button
-                        style={product.styleCart}
+                        style={productData.some(item => item.productId === product.productId) 
+                          ? ({ background: '#fdbc0a'})
+                          : (product.styleCart)}
                         disabled={product.valueStatus !== 'Add to Cart'}
                         onClick={() => addCart(product.productId)}
                         className='add'
                         >
-                        {product.valueStatus === undefined ? product.valueStatus = 'Add to Cart' : product.valueStatus}
+                        {
+                          productData.some(item => item.productId === product.productId) 
+                          ? (product.valueStatus = 'In Cart')
+                          : (product.valueStatus === undefined 
+                            ? (product.valueStatus = 'Add to Cart') 
+                            : product.valueStatus)
+                        }
                       </button>
                     </div>
                   </div>
