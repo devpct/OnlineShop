@@ -12,8 +12,8 @@ export const SettingsPageContext = createContext()
 export const CustomerDataContext = createContext()
 export const UsernameContext = createContext()
 export const NumberGoodsContext = createContext()
-export const productDataContext = createContext()
 export const CartProductsContext = createContext()
+export const ProductsCartContext = createContext()
 
 
 
@@ -30,8 +30,9 @@ const HomeProvider = ({ children }) => {
     const [settingsPage, setSettingsPage] = useState({display: 'none'})
     const [customerData, setCustomerData] = useState({nameLastname : ''})
     const [numberGoods, setNumberGoods] = useState(0)
-    const [productData, setProductData] = useState()
     const [cartProducts, setCartProducts] = useState('')
+    const [productsCart , setProductsCart] = useState([])
+
 
     return(
         <MenuBurgerContext.Provider value={[menuBurger, setMenuBurger]}>
@@ -45,11 +46,11 @@ const HomeProvider = ({ children }) => {
         <SettingsPageContext.Provider value={[settingsPage, setSettingsPage]}>
         <CustomerDataContext.Provider value={[customerData, setCustomerData]}>
         <NumberGoodsContext.Provider value={[numberGoods, setNumberGoods]}>
-        <productDataContext.Provider value={[productData, setProductData]}>
         <CartProductsContext.Provider value={[cartProducts, setCartProducts]}>
+        <ProductsCartContext.Provider value={[productsCart, setProductsCart]}>
             {children}
+        </ProductsCartContext.Provider>
         </CartProductsContext.Provider>
-        </productDataContext.Provider>
         </NumberGoodsContext.Provider>
         </CustomerDataContext.Provider>
         </SettingsPageContext.Provider>

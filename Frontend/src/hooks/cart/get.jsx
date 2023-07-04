@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from 'react'
 import axios from 'axios'
-import { CustomerDataContext, NumberGoodsContext } from '../../context/home/HomeContext'
+import { CustomerDataContext , NumberGoodsContext , ProductsCartContext } from '../../context/home/HomeContext'
 
 function Get({ setProductData }) {
 
   const [numberGoods, setNumberGoods] = useContext(NumberGoodsContext)
   const [customerData, setCustomerData] = useContext(CustomerDataContext)
+  const [productsCart , setProductsCart] = useContext(ProductsCartContext)
 
   useEffect(() => {
       axios.get('http://127.0.0.1:8000/data/carts')
@@ -18,8 +19,9 @@ function Get({ setProductData }) {
             quantity: cart.quantity,
             status: cart.status
           }))
-          setProductData(productsCart)
+          setProductsCart(productsCart)
           setNumberGoods(filteredProducts.length)
+          setProductData(productsCart)
         })
         .catch(error => {
           console.error(error)

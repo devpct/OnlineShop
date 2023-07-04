@@ -30,4 +30,21 @@ $color-main: rgb(35, 35, 35);
         font-size: 8rem;
       }
     }
+    .btns-card{
+      display: flex;
+      width: 100%;
+      button:first-child{
+        width: 30%;
+        border-radius: 20px 0 0 20px;
+        border: 0;
+        cursor: pointer;
+        background-color: #d12424;
+        font-size: 1.4rem;
+        color: #fff;
+      }
+      button:last-child{
+        width: 75%;
+        border-radius: 0 20px 20px 0;
+      }
+    }
   }

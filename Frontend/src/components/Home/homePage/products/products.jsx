@@ -3,6 +3,7 @@ import './products.scss'
 import { CustomerDataContext , NumberGoodsContext , CartProductsContext } from '../../../../context/home/HomeContext'
 import GetProductCart from '../../../../hooks/cart/get'
 import GetProducts from '../../../../hooks/product/get'
+import Delete from '../../../../hooks/cart/delete'
 import Add from '../../../../hooks/cart/add'
 
 function products({categoryId}) {
@@ -42,7 +43,8 @@ function products({categoryId}) {
         })
       }
       
-      const addCart = (productId) => {
+      const addCart = (productId , valueStatus) => {
+        if(valueStatus === 'Add to Cart'){
           const updatedProducts = products.map((product) => {
             if (product.productId === productId) {
               return {
@@ -51,23 +53,24 @@ function products({categoryId}) {
                 styleCart: { background: '#fdbc0a'}
               }
             }
-          return product
-        })
-        setProducts(updatedProducts)
-        setNumberGoods((prevNumberGoods) => prevNumberGoods + 1)
-        setProductInformation(
-          {
-            customerId: customerData.id,
-            productId: productId,
-            quantity: +document.getElementById(`product-input-${productId}`).value,
-            status: 'cart'
+            return product
+          })
+          setProducts(updatedProducts)
+          setNumberGoods((prevNumberGoods) => prevNumberGoods + 1)
+          setProductInformation(
+            {
+              customerId: customerData.id,
+              productId: productId,
+              quantity: +document.getElementById(`product-input-${productId}`).value,
+              status: 'In Cart'
+            }
+            )
+          } 
           }
-        )
-    }
-
-  return (
-    <>
-        {productData !== undefined && productData.length !== 0 && (
+          
+          return (
+            <>
+        {productData !== undefined &&  (
           <div className='box-product'>
             <div className='con-cards'>
                 {products.map((product) => (
@@ -101,22 +104,24 @@ function products({categoryId}) {
                       <button disabled={product.valueStatus !== 'Add to Cart'} onClick={()=> plusProduct(product.productId)}><i className='bi bi-plus-lg'></i></button>
                     </div>
                     <div className='con-btn'>
-                      <button
-                        style={productData.some(item => item.productId === product.productId) 
-                          ? ({ background: '#fdbc0a'})
-                          : (product.styleCart)}
-                        disabled={product.valueStatus !== 'Add to Cart'}
-                        onClick={() => addCart(product.productId)}
-                        className='add'
-                        >
-                        {
-                          productData.some(item => item.productId === product.productId) 
-                          ? (product.valueStatus = 'In Cart')
-                          : (product.valueStatus === undefined 
-                            ? (product.valueStatus = 'Add to Cart') 
-                            : product.valueStatus)
-                        }
-                      </button>
+                    <button
+                      disabled={product.valueStatus !== 'Add to Cart'}
+                      style={
+                        productData.some((item) => item.productId === product.productId)
+                          ? productData.find((item) => item.productId === product.productId).status === 'In Cart'
+                            ? { background: '#fdbc0a' }
+                            : { background: '#24ad52' }
+                          : product.styleCart
+                      }
+                      onClick={() => addCart(product.productId , product.valueStatus)}
+                      className='add'
+                    >
+                      {productData.some((item) => item.productId === product.productId)
+                        ? product.valueStatus = productData.find((item) => item.productId === product.productId).status
+                        : product.valueStatus === undefined
+                        ? 'Add to Cart'
+                        : product.valueStatus}
+                    </button>
                     </div>
                   </div>
                   </div>
@@ -124,6 +129,9 @@ function products({categoryId}) {
             </div>
         </div>
     )}
+    {products.length > 0  &&
+      <Delete products={products} setProducts={setProducts}/>
+    }
     <GetProductCart setProductData={setProductData}/>
     <GetProducts setProducts={setProducts}/>
     <Add productInformation={productInformation}/>

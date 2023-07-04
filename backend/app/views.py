@@ -319,12 +319,14 @@ def addCart(request):
     cart.save()
     return Response({'status': 'ok'})
 
+
 @api_view(['DELETE'])
 def deleteCart(request):
     data = json.loads(request.body)
-    cartId = data['id']
+    customerId = data['customerId']
+    productId = data['productId']
 
-    Carts.objects.filter(id=cartId).delete()
+    Carts.objects.filter(customer_id=customerId, product_id=productId).delete()
 
     return JsonResponse({'status': 'ok'})
 
@@ -332,21 +334,19 @@ def deleteCart(request):
 @api_view(['PUT'])
 def updateCart(request):
     data = json.loads(request.body)
-    cartId = data['id']
-    userId = data['userId']
+    customerId = data['customerId']
     productId = data['productId']
     quantity = data['quantity']
     status = data['status']
 
-    cart = Carts.objects.get(id=cartId)
-    cart.user_id = Users.objects.get(id=userId)
-    cart.product_id = Products.objects.get(id=productId)
+    cart = Carts.objects.get(customer_id=customerId, product_id=productId)
     cart.quantity = quantity
     cart.status = status
 
     cart.save()
 
     return JsonResponse({'status': 'ok'})
+
 
 
 
