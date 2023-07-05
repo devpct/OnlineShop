@@ -10,7 +10,6 @@ import '../homePage/homePage.scss'
 
 function CartPage() {
 
-
   const [cartPage, setCartPage] = useContext(CartPageContext)
   const [products, setProducts] = useState([])
   const [cartProducts, setCartProducts] = useContext(CartProductsContext)
@@ -19,6 +18,9 @@ function CartPage() {
   const [removeCart, setRemoveCart] = useState()
   const [updateCart, setUpdateCart] = useState()
 
+  useEffect(()=>{
+    console.log(productsCart)
+  },[productsCart])
 
   const minusProduct = (product) => {
     setQuantityMap((prevQuantityMap) => {

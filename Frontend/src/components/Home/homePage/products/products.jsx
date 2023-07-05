@@ -3,7 +3,6 @@ import './products.scss'
 import { CustomerDataContext , NumberGoodsContext , CartProductsContext } from '../../../../context/home/HomeContext'
 import GetProductCart from '../../../../hooks/cart/get'
 import GetProducts from '../../../../hooks/product/get'
-import Delete from '../../../../hooks/cart/delete'
 import Add from '../../../../hooks/cart/add'
 
 function products({categoryId}) {
@@ -25,6 +24,7 @@ function products({categoryId}) {
           setProducts(initialProducts)
       }
     },[productData])
+
 
     const minusProduct = (productId) => {
         setQuantityMap((prevQuantityMap) => {
@@ -129,9 +129,6 @@ function products({categoryId}) {
             </div>
         </div>
     )}
-    {products.length > 0  &&
-      <Delete products={products} setProducts={setProducts}/>
-    }
     <GetProductCart setProductData={setProductData}/>
     <GetProducts setProducts={setProducts}/>
     <Add productInformation={productInformation}/>
